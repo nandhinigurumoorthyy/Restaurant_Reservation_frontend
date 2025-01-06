@@ -34,8 +34,14 @@ const Navbar = () => {
           </Link>
         </div>
       </div>
-      <div className="text-4xl text-red-700 hover:text-red-800">
-        <CgProfile />
+      <div>
+        <Link
+          to=""
+          type="submit"
+          className="rounded-lg underline-0 border-2 px-3 py-2 gap-2 text-xl bg-red-700 text-white hover:bg-red-800 hover:border-red-700 hover:border-2 flex"
+        >
+          LogOut
+        </Link>
       </div>
     </div>
   );

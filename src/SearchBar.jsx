@@ -26,7 +26,7 @@ const SearchBar = ({ onSearch }) => {
       <form onSubmit={handleSearch} className="flex flex-col gap-4">
         <input
           type="text"
-          placeholder="Search restaurants..."
+          placeholder="Search Restaurants..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="p-2 hover:border-2 hover:border-red-700 rounded w-full"
@@ -40,10 +40,11 @@ const SearchBar = ({ onSearch }) => {
             className="p-2 hover:border-2 hover:border-red-700 rounded"
           >
             <option value="">Cuisine</option>
-            <option value="Italian">Italian</option>
-            <option value="Chinese">Chinese</option>
             <option value="Indian">Indian</option>
-            <option value="Mexican">Mexican</option>
+            <option value="Vegan">Vegan</option>
+            <option value="BBQ">BBQ</option>
+            <option value="Seafood">Seafood</option>
+            <option value="Italian">Italian</option>
           </select>
 
           <select
@@ -73,6 +74,7 @@ const SearchBar = ({ onSearch }) => {
             <option value="Mumbai">Mumbai</option>
             <option value="Kolkata">Kolkata</option>
             <option value="Hyderabad">Hyderabad</option>
+            <option value="Bangalore">Bangalore</option>
           </select>
 
           <select
@@ -108,13 +110,12 @@ const SearchBar = ({ onSearch }) => {
             <option value="">Special Features</option>
             <option value="Outdoor Seating">Outdoor Seating</option>
             <option value="Live Music">Live Music</option>
-            <option value="Pet Friendly">Pet Friendly</option>
           </select>
         </div>
 
         <button
           type="submit"
-          className="bg-red-600 text-white p-2 rounded hover:bg-red-700"
+          className="bg-red-700 text-white p-2 font-medium rounded hover:bg-red-800 hover:border-red-700 hover:border-2"
         >
           Search
         </button>

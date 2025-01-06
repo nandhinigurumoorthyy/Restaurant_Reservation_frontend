@@ -2,11 +2,15 @@
   {
     "id": 1,
     "name": "The Gourmet Kitchen",
+    "title_card_img": "https://d2lswn7b0fl4u2.cloudfront.net/photos/pg-italian-dishes-1645372086.jpg",
     "cuisine": "Italian",
+    "description": "Classic Italian dishes served with love and tradition.",
     "location": "Chennai",
     "priceRange": "₹2000 - ₹7000",
     "rating": 4.5,
     "features": ["Outdoor Seating", "Live Music", "Casual Dining"],
+    "ambiance": ["Romantic", "Casual"],
+    "dietaryRestrictions": ["Gluten-Free"],
     "menus": [
       { "dish": "Margherita Pizza", "price": 2000 },
       { "dish": "Pasta Alfredo", "price": 3600 },
@@ -17,8 +21,8 @@
     ],
     "photos": [
       "https://www.tourissimo.travel/hs-fs/hubfs/Blog_pictures/Hotels/Italy%20Hotels%20Blog%205.jpg?width=2240&height=1260&name=Italy%20Hotels%20Blog%205.jpg",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTutz4X9qh_FXOUA3JNqDlMc6lFTgRuwfHN-50xdPRASmjRD_bToU9GsRbjUsuTaNK4O_g&usqp=CAU",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR17XpX1RsD6rdX4pOPLACyPd-47S9lFkyb7IAd8l0n81HV-aZrmJxDlgkdchRxGpI-MC0&usqp=CAU",
+      "https://res.cloudinary.com/simplotel/image/upload/x_0,y_115,w_1730,h_974,r_0,c_crop,q_80,fl_progressive/w_900,f_auto,c_fit/the-promenade-pondicherry/bay_kqkt6l?1735689600085",
+      "https://b.zmtcdn.com/data/pictures/7/3700387/8116d5de33d00eff37079a56c856c423_featured_v2.jpg",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-5MInhY0One7gh3sFwqOGnen_Syzipxo7kQ&s"
     ],
     "link": "http://www.gourmetkitchen.com",
@@ -30,11 +34,15 @@
   {
     "id": 2,
     "name": "Spice Symphony",
+    "title_card_img": "https://www.holidify.com/images/cmsuploads/compressed/shutterstock_649541308_20191010160155.png",
     "cuisine": "Indian",
+    "description": "A harmonious blend of India's bold and vibrant spices.",
     "location": "Mumbai",
     "priceRange": "₹2000 - ₹7000",
     "rating": 4.2,
     "features": ["Family Friendly", "Private Rooms"],
+    "ambiance": ["Family"],
+    "dietaryRestrictions": ["Gluten-Free"],
     "menus": [
       { "dish": "Butter Chicken", "price": 2400 },
       { "dish": "Paneer Tikka", "price": 4550 },
@@ -58,11 +66,15 @@
   {
     "id": 3,
     "name": "Green Leaf Cafe",
+    "title_card_img": "https://dineout-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/DINEOUT_ALL_RESTAURANTS/IMAGES/RESTAURANT_IMAGE_SERVICE/2024/10/18/e80496d2-e2fc-4540-ac09-3de7e402a9df_image5fe4d6d31e0bc400bbc026f625cd9c9d1.JPG",
     "cuisine": "Vegan",
+    "description": "Plant-based dishes with a fresh, eco-friendly twist.",
     "location": "Bangalore",
     "priceRange": "₹7000 - ₹12000",
     "rating": 4.3,
     "features": ["Vegan Options", "Family Friendly", "Organic Menu"],
+    "ambiance": ["Family", "Casual"],
+    "dietaryRestrictions": ["Vegan", "Vegetarian"],
     "menus": [
       { "dish": "Vegan Burger", "price": 7050 },
       { "dish": "Kale Smoothie", "price": 7300 },
@@ -85,11 +97,15 @@
   {
     "id": 4,
     "name": "Dindugal Briyani",
+    "title_card_img": "https://t4.ftcdn.net/jpg/05/80/78/15/360_F_580781596_uVgdX3avt2KHJQxWr4gd9Xli4VFkcfb5.jpg",
     "cuisine": "Indian",
+    "description": "Traditional Indian flavors with a modern touch.",
     "location": "Chennai",
     "priceRange": "₹12000 - ₹17000",
     "rating": 4.0,
     "features": ["Casual Dining", "Outdoor Seating", "Live Music"],
+    "ambiance": ["Family"],
+    "dietaryRestrictions": ["Gluten-Free"],
     "menus": [
       { "dish": "Mutton Briyani", "price": 13500 },
       { "dish": "Chicken Biryani", "price": 14000 },
@@ -112,11 +128,15 @@
   {
     "id": 5,
     "name": "Ocean Eats",
+    "title_card_img": "https://img.freepik.com/premium-photo/aerial-view-photograph-4-people-eating-plate-grilled-prawns-restaurant-table-minimalist-we_343960-117093.jpg",
     "cuisine": "Seafood",
+    "description": "Rustic seafood dining featuring crabs, lobsters, and more.",
     "location": "Mumbai",
     "priceRange": "₹7000 - ₹12000",
     "rating": 4.6,
     "features": ["Fine Dining", "Outdoor Seating", "Live Music"],
+    "ambiance": ["Family", "Romantic"],
+    "dietaryRestrictions": ["Gluten-Free"],
     "menus": [
       { "dish": "Crispy Fish-and-Chips", "price": 7800 },
       { "dish": "Fish Finger", "price": 8900 },
@@ -140,11 +160,15 @@
   {
     "id": 6,
     "name": "Vegan Palace",
+    "title_card_img": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/38/7f/70/seafood-corner.jpg",
     "cuisine": "Vegan",
+    "description": "Wholesome vegan meals crafted for health and taste.",
     "location": "Hyderabad",
     "priceRange": "₹2000 - ₹7000",
     "rating": 4.3,
     "features": ["Eco-Friendly", "Organic Menu", "Fine Dining"],
+    "ambiance": ["Casual", "Romantic"],
+    "dietaryRestrictions": ["Vegan", "Vegetarian"],
     "menus": [
       { "dish": "Vegan Burger", "price": 2000 },
       { "dish": "Kale Smoothie", "price": 2300 },
@@ -167,11 +191,15 @@
   {
     "id": 7,
     "name": "Flame and Grill",
+    "title_card_img": "https://t3.ftcdn.net/jpg/06/05/78/76/360_F_605787633_yWU3UoS6EmVJa7gkmhkuTfXxZGcnxdhc.jpg",
     "cuisine": "BBQ",
+    "description": "Char-grilled barbecue with a rustic touch.",
     "location": "Bangalore",
     "priceRange": "₹12000 - ₹17000",
     "rating": 4.7,
     "features": ["Buffet", "Live Grilling", "Live Music"],
+    "ambiance": ["Casual", "Romantic"],
+    "dietaryRestrictions": ["Gluten-Free"],
     "menus": [
       { "dish": "Grilled Chicken", "price": 12800 },
       { "dish": "Barbecue Ribs", "price": 13900 },
@@ -194,11 +222,15 @@
   {
     "id": 8,
     "name": "Seafood Paradise",
+    "title_card_img": "https://d4t7t8y8xqo0t.cloudfront.net/app/resized/818X450/restaurant/673844/restaurant020220215074950.jpeg",
     "cuisine": "Seafood",
+    "description": "Where seafood meets waterfront dining at its best.",
     "location": "Kolkata",
     "priceRange": "₹12000 - ₹17000",
     "rating": 4.4,
     "features": ["Outdoor Seating", "Live Music", "Casual Dining"],
+    "ambiance": ["Casual", "Romantic"],
+    "dietaryRestrictions": ["Gluten-Free"],
     "menus": [
       { "dish": "Grilled Lobster", "price": 12200 },
       { "dish": "Crab Curry", "price": 15800 },
@@ -221,11 +253,15 @@
   {
     "id": 9,
     "name": "Pizza Bliss",
+    "title_card_img": "https://vmnk.gumlet.io/assets/bangalore/monkey-bar-indira-nagar/images/original/monkey-bar-indira-nagar-3iape.jpg",
     "cuisine": "Italian",
+    "description": "Hand-tossed pizzas with an authentic Italian flair.",
     "location": "Chennai",
     "priceRange": "₹7000 - ₹12000",
     "rating": 4.1,
     "features": ["Family Friendly", "Private Rooms"],
+    "ambiance": ["Casual"],
+    "dietaryRestrictions": ["Vegan", "Vegetarian"],
     "menus": [
       { "dish": "Pizza Margherita", "price": 10400 },
       { "dish": "Pizza Napoletana", "price": 11400 },
@@ -248,11 +284,15 @@
   {
     "id": 10,
     "name": "Curry Kingdom",
+    "title_card_img": "https://salum.ph/wp-content/uploads/2024/01/tipon.jpg",
     "cuisine": "Indian",
+    "description": "Journey through India's diverse regional flavors.",
     "location": "Mumbai",
     "priceRange": "₹2000 - ₹7000",
     "rating": 4.2,
     "features": ["Family Friendly", "Private Rooms", "Group Dining"],
+    "ambiance": ["Casual", "Family"],
+    "dietaryRestrictions": ["Gluten-Free"],
     "menus": [
       { "dish": "Chicken Biryani", "price": 3500 },
       { "dish": "Rogan Josh", "price": 2700 },
@@ -275,11 +315,15 @@
   {
     "id": 11,
     "name": "BBQ Bites",
+    "title_card_img": "https://img.freepik.com/premium-photo/closeup-view-grill-with-mouthwatering-food-sizzling-grilling-perfection-sizzle-steam-korean-bbq-grill-ai-generated_538213-33238.jpg",
     "cuisine": "BBQ",
+    "description": "Juicy BBQ dishes with a variety of tangy sauces.",
     "location": "Bangalore",
     "priceRange": "₹12000 - ₹17000",
     "rating": 4.5,
     "features": ["Rooftop Seating", "Live Music", "Outdoor Seating"],
+    "ambiance": ["Casual", "Family"],
+    "dietaryRestrictions": ["Gluten-Free"],
     "menus": [
       { "dish": "Grilled Salmon", "price": 15500 },
       { "dish": "Caesar Salad", "price": 12800 },
@@ -302,11 +346,15 @@
   {
     "id": 12,
     "name": "Veg Delight",
+    "title_card_img": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/24/23/30/21/hyatt-zilara-riviera.jpg?w=1200&h=-1&s=1",
     "cuisine": "Vegan",
+    "description": "A paradise for vegans who love vibrant, hearty meals.",
     "location": "Hyderabad",
     "priceRange": "₹2000 - ₹7000",
     "rating": 4.3,
     "features": ["Group Dining", "Organic Menu"],
+    "ambiance": ["Casual", "Romantic"],
+    "dietaryRestrictions": ["Vegan", "Vegetarian"],
     "menus": [
       { "dish": "Lentil Bolognese", "price": 2200 },
       { "dish": "Butternut Squash Risotto", "price": 3800 },
@@ -329,11 +377,15 @@
   {
     "id": 13,
     "name": "Pizza Haven",
+    "title_card_img": "https://urbanhermitage.in/wp-content/uploads/2015/12/DSC_0773-2.jpg",
     "cuisine": "Italian",
+    "description": "Indulge in the rich and vibrant tastes of Italy.",
     "location": "Kolkata",
     "priceRange": "₹7000 - ₹12000",
     "rating": 4.0,
     "features": ["Outdoor Seating", "Live Music", "Casual Dining"],
+    "ambiance": ["Casual", "Romantic"],
+    "dietaryRestrictions": ["Vegan", "Vegetarian"],
     "menus": [
       { "dish": "Pepperoni Pizza", "price": 7900 },
       { "dish": "Pizza Marinara", "price": 8900 },
@@ -356,11 +408,15 @@
   {
     "id": 14,
     "name": "Indian House",
+    "title_card_img": "https://static.wixstatic.com/media/0f644c_13d6530c37c64dc7951d4dd918dbb54c~mv2_d_6720_4480_s_4_2.jpg/v1/crop/x_0,y_80,w_5390,h_4400/fill/w_539,h_440,al_c,q_80,usm_0.66_1.00_0.01/0f644c_13d6530c37c64dc7951d4dd918dbb54c~mv2_d_6720_4480_s_4_2.jpg",
     "cuisine": "Indian",
+    "description": "A royal experience with India’s rich culinary heritage.",
     "location": "Chennai",
     "priceRange": "₹7000 - ₹12000",
     "rating": 4.7,
     "features": ["Casual Dining", "Live Music"],
+    "ambiance": ["Family", "Romantic"],
+    "dietaryRestrictions": ["Gluten-Free"],
     "menus": [
       { "dish": "Tikka Masala chicken", "price": 9000 },
       { "dish": "Egg Salad", "price": 10800 },
@@ -383,11 +439,15 @@
   {
     "id": 15,
     "name": "Ocean Waves",
+    "title_card_img": "https://b.zmtcdn.com/data/collections/a7bf69f0d955766f9fe5ac026c2eaec0_1709815455.jpg",
     "cuisine": "Seafood",
+    "description": "A gourmet seafood experience with a modern twist.",
     "location": "Hyderabad",
     "priceRange": "₹12000 - ₹17000",
     "rating": 4.9,
     "features": ["Takeaway", "Outdoor Seating", "Live Music", "Casual Dining"],
+    "ambiance": ["Casual", "Romantic"],
+    "dietaryRestrictions": ["Gluten-Free"],
     "menus": [
       { "dish": "Lobster Mac and Cheese", "price": 12200 },
       { "dish": "Seafood meal", "price": 16500 },
@@ -398,9 +458,9 @@
     ],
     "photos": [
       "https://getfish.com.au/cdn/shop/articles/Step_3_-_mud_crab.png?v=1716445401",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJWS_PoCsGoGU1qVH3cM06RR1eiR4GRWE4Z05kF5NDgUI6sOpRLDuWspJevrAebEgHCXQ&usqp=CAU",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTaamKT_rwXU-K3XHlOg4J4q38dR_CsO5Csw&s",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDo9zHLAB27Fc160CXj6LZm_Idz_v_74fO7w&s"
+      "https://res.cloudinary.com/purnesh/image/upload/f_auto/v1612166298/lacabana1.jpg",
+      "https://res.cloudinary.com/purnesh/image/upload/f_auto/v1612166299/qbar.jpg",
+      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/c5/91/99/img-20181202-122531-largejpg.jpg?w=600&h=400&s=1"
     ],
     "link": "http://www.oceanwaves.com",
     "hoursOfOperation": {

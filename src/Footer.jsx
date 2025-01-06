@@ -7,7 +7,7 @@ import { PiInstagramLogo } from "react-icons/pi";
 
 const Footer = () => {
   return (
-    <div className="flex justify-around h-24 items-center shadow-xl bg-zinc-50">
+    <div className="flex justify-around h-24 items-center shadow-xl bg-zinc-50 py-4 mt-10 relative w-full">
       <div className="italic flex gap-4 text-4xl text-red-800">
         <span>
           <IoRestaurant />

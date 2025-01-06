@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { IoLogIn } from "react-icons/io5";
-import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
 const Login = () => {
@@ -24,7 +23,7 @@ const Login = () => {
       .then((res) => {
         if (res.data && res.data.user) {
           localStorage.setItem("name", res.data.user.name);
-          navigate("/hom");
+          navigate("/home");
         } else {
           console.error("Unexpected server response:", res.data);
           navigate("/error", {
@@ -46,54 +45,66 @@ const Login = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100 vw-100 bg-light">
-      <form className="w-25" onSubmit={handleSubmit}>
-        <div className="card rounded p-3 shadow-lg">
+    <div className="flex justify-center items-center min-h-screen bg-light">
+      <form className="w-1/4" onSubmit={handleSubmit}>
+        <div className="card rounded p-3 shadow-lg bg-white">
           <div className="card-body">
-            <h3 className="card-title mb-3 text-center d-flex justify-content-center align-items-center gap-3">
+            <h3 className="card-title mb-3 text-center flex justify-center items-center gap-3">
               <span>
                 <IoLogIn />
-              </span>{" "}
+              </span>
               LogIn
             </h3>
             <div className="mb-3">
-              <label htmlFor="email" className="form-label">
+              <label
+                htmlFor="email"
+                className="block text-lg font-medium text-gray-700"
+              >
                 Email address
               </label>
               <input
                 name="email"
                 type="email"
-                className="form-control"
+                className="form-input mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 id="email"
                 placeholder="name@example.com"
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="password" className="form-label">
+              <label
+                htmlFor="password"
+                className="block text-lg font-medium text-gray-700"
+              >
                 Password
               </label>
               <input
                 name="password"
                 type="password"
-                className="form-control"
+                className="form-input p-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 id="password"
-                placeholder="......."
+                placeholder="..........."
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <div className="d-grid mb-1">
-              <button className="btn btn-primary" type="submit">
+            <div className="mb-3 mt-2">
+              <Link
+                to="/home"
+                className="w-full text-center bg-sky-600 text-white py-2 px-4 rounded-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                type="submit"
+              >
                 LogIn
-              </button>
+              </Link>
             </div>
-            <div>
-              <p className="mb-3 mt-3">Create a new account</p>
-              <div className="d-grid">
-                <Link to="/create" className="btn btn-danger" type="submit">
-                  SignUp
-                </Link>
-              </div>
+            <div className="mt-4">
+              <p>Create a new account</p>
+              <Link
+                to="/create"
+                type="submit"
+                className="w-full text-center bg-red-700 text-white py-2 px-4 rounded-lg hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-400"
+              >
+                SignUp
+              </Link>
             </div>
           </div>
         </div>

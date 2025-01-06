@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { GiDirectionSign } from "react-icons/gi";
@@ -40,75 +39,93 @@ function Signup() {
   };
 
   return (
-    <>
-      <div className="d-flex justify-content-center align-items-center vh-100 vw-100 bg-light">
-        <form className="w-25" onSubmit={handleSubmit}>
-          <div className="card rounded p-3 shadow-lg">
-            <div className="card-body">
-              <h3 className="card-title mb-3 text-center d-flex justify-content-center align-items-center gap-3">
-                <span>
-                  <GiDirectionSign />
-                </span>{" "}
+    <div className="flex justify-center items-center min-h-screen bg-light">
+      <form className="w-1/4" onSubmit={handleSubmit}>
+        <div className="card rounded p-6 shadow-lg bg-white">
+          <div className="card-body">
+            <h3 className="card-title mb-3 text-center flex justify-center items-center gap-3">
+              <span>
+                <GiDirectionSign />
+              </span>
+              SignUp
+            </h3>
+            <h6 className="mb-3 text-gray-600">Create an account</h6>
+
+            <div className="mb-3">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700"
+              >
+                User Name
+              </label>
+              <input
+                name="name"
+                type="text"
+                className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                id="name"
+                placeholder="User name"
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+
+            <div className="mb-3">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Email address
+              </label>
+              <input
+                name="email"
+                type="email"
+                className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                id="email"
+                placeholder="name@example.com"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+
+            <div className="mb-3">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Password
+              </label>
+              <input
+                name="password"
+                type="password"
+                className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                id="password"
+                placeholder=".........."
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+
+            <div className="mb-3 w-full">
+              <Link
+                to="/create"
+                type="submit"
+                className="w-full text-center mt-2 bg-red-700 text-white py-2 px-4 rounded-lg hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-400"
+              >
                 SignUp
-              </h3>
-              <h6 className="mb-3 text-secondary">Create an account</h6>
-              <div className="mb-3">
-                <label htmlFor="name" className="form-label">
-                  User Name
-                </label>
-                <input
-                  name="name"
-                  type="text"
-                  className="form-control"
-                  id="name"
-                  placeholder="User name"
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="email" className="form-label">
-                  Email address
-                </label>
-                <input
-                  name="email"
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  placeholder="name@example.com"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="password" className="form-label">
-                  Password
-                </label>
-                <input
-                  name="password"
-                  type="password"
-                  className="form-control"
-                  id="password"
-                  placeholder=".........."
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <div className="d-grid mb-4">
-                <button className="btn btn-danger" type="submit">
-                  SignUp
-                </button>
-              </div>
-              <div>
-                <p className="mb-3">Already have an account!!</p>
-                <div className="d-grid">
-                  <Link to="/login" className="btn btn-primary" type="submit">
-                    LogIn
-                  </Link>
-                </div>
-              </div>
+              </Link>
+            </div>
+
+            <div className="mt-4">
+              <p>Already have an account?</p>
+              <Link
+                to="/login"
+                className="w-full text-center bg-sky-600 text-white py-2 px-4 rounded-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                type="submit"
+              >
+                LogIn
+              </Link>
             </div>
           </div>
-        </form>
-      </div>
-    </>
+        </div>
+      </form>
+    </div>
   );
 }
 

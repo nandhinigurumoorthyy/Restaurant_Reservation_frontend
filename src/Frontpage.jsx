@@ -41,7 +41,7 @@ const Frontpage = () => {
               <Link
                 to="/login"
                 type="submit"
-                className="rounded-lg underline-0 border-2 px-3 py-2 gap-2 text-xl bg-sky-600 text-white hover:bg-sky-800 flex"
+                className="rounded-lg underline-0 border-2 px-3 py-2 gap-2 text-xl bg-sky-700 text-white hover:bg-sky-800 flex"
               >
                 <span className="text-2xl">
                   <IoLogIn />
