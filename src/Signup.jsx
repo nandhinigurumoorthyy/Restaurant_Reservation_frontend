@@ -4,23 +4,23 @@ import { Link, useNavigate } from "react-router-dom";
 import { GiDirectionSign } from "react-icons/gi";
 
 function Signup() {
-  const [name, setName] = useState("");
+  const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [age, setAge] = useState("");
   const [contact, setContact] = useState("");
   const navigate = useNavigate();
   console.log("signup function");
-  console.log({ name, email, password, age, contact });
+  console.log({ username, email, password, age, contact });
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log({ name, email, password, age, contact });
+    console.log({ username, email, password, age, contact });
 
     axios
       .post("http://localhost:10000/create", {
-        name,
+        username,
         email,
         password,
         age,
@@ -56,18 +56,18 @@ function Signup() {
 
             <div className="mb-3">
               <label
-                htmlFor="name"
+                htmlFor="username"
                 className="block text-sm font-medium text-gray-700"
               >
                 User Name
               </label>
               <input
-                name="name"
+                name="username"
                 type="text"
                 className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                id="name"
+                id="username"
                 placeholder="user name"
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => setUserName(e.target.value)}
                 required
               />
             </div>

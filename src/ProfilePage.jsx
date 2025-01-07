@@ -7,7 +7,7 @@ const ProfilePage = () => {
   // Sample data for the user profile (this could come from an API or context)
   const [user, setUser] = useState({
     username: "John Doe",
-    age: 28,
+    age:21,
     contactDetails: "john.doe@example.com",
     bookings: [
       {
