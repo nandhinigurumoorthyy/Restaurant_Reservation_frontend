@@ -34,6 +34,7 @@ const Login = () => {
           // Store username and email in localStorage
           localStorage.setItem("username", res.data.user.username);
           localStorage.setItem("email", res.data.user.email);
+         
 
           // Navigate to home page
           navigate("/home");
