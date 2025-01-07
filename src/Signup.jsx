@@ -7,20 +7,24 @@ function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [age, setAge] = useState("");
+  const [contact, setContact] = useState("");
   const navigate = useNavigate();
   console.log("signup function");
-  console.log({ name, password, email });
+  console.log({ name, email, password, age, contact });
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log({ name, email, password });
+    console.log({ name, email, password, age, contact });
 
     axios
-      .post("https://password-reset-flow-server-0ne8.onr.com/create", {
+      .post("http://localhost:10000/create", {
         name,
         email,
         password,
+        age,
+        contact,
       })
       .then((res) => {
         console.log("Response:", res.data);
@@ -28,7 +32,6 @@ function Signup() {
       })
       .catch((error) => {
         console.error("Error:", error.message);
-        // Navigate to the error page and pass the error message
         navigate("/error", {
           state: {
             message: "Signup failed! Please check your credentials.",
@@ -39,8 +42,8 @@ function Signup() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-light">
-      <form className="w-1/4" onSubmit={handleSubmit}>
+    <div className="flex justify-center items-center min-h-screen bg-light pt-4 pb-4">
+      <form className="w-2/4" onSubmit={handleSubmit}>
         <div className="card rounded p-6 shadow-lg bg-white">
           <div className="card-body">
             <h3 className="card-title mb-3 text-center flex justify-center items-center gap-3">
@@ -63,25 +66,9 @@ function Signup() {
                 type="text"
                 className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 id="name"
-                placeholder="User name"
+                placeholder="user name"
                 onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-
-            <div className="mb-3">
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Email address
-              </label>
-              <input
-                name="email"
-                type="email"
-                className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                id="email"
-                placeholder="name@example.com"
-                onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
 
@@ -99,25 +86,78 @@ function Signup() {
                 id="password"
                 placeholder=".........."
                 onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="mb-3">
+              <label
+                htmlFor="age"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Age
+              </label>
+              <input
+                name="age"
+                type="number"
+                className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                id="age"
+                placeholder="age"
+                onChange={(e) => setAge(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="mb-3">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Email address
+              </label>
+              <input
+                name="email"
+                type="email"
+                className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                id="email"
+                placeholder="name@example.com"
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="mb-3">
+              <label
+                htmlFor="contact"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Contact
+              </label>
+              <input
+                name="contact"
+                type="tel" // Changed to 'tel' type for phone number input
+                className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                id="contact"
+                placeholder="+91 91234 56789"
+                onChange={(e) => setContact(e.target.value)}
+                required
               />
             </div>
 
             <div className="mb-3 w-full">
-              <Link
-                to="/create"
-                type="submit"
+              <button
+                type="submit" // Corrected to submit button
                 className="w-full text-center mt-2 bg-red-700 text-white py-2 px-4 rounded-lg hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-400"
               >
                 SignUp
-              </Link>
+              </button>
             </div>
 
-            <div className="mt-4">
+            <div className="mt-4 w-full">
               <p>Already have an account?</p>
               <Link
                 to="/login"
                 className="w-full text-center bg-sky-600 text-white py-2 px-4 rounded-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400"
-                type="submit"
               >
                 LogIn
               </Link>

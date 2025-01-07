@@ -3,11 +3,13 @@ import { useParams } from "react-router-dom";
 import restaurantData from "./Restaurant.json"; // Import your local JSON
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { useNavigate } from "react-router-dom";
 
 const RestaurantItem = () => {
-  const [restaurant, setRestaurant] = useState(null); // Holds the selected restaurant data
+  const [restaurant, setRestaurant] = useState(); // Holds the selected restaurant data
   const [loading, setLoading] = useState(true);
   const { restaurantId } = useParams(); // Extract `id` from the URL parameters
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getRestaurant = () => {
@@ -26,10 +28,20 @@ const RestaurantItem = () => {
     getRestaurant();
   }, [restaurantId]);
 
+  const handleReserveClick = () => {
+    navigate(`/restaurants/${restaurantId}/reservepage`);
+  };
+
   if (loading) {
     return (
-      <div className="flex h-screen items-center justify-center font-mono text-4xl font-semibold">
-        Loading....
+      <div className="flex flex-col h-screen items-center justify-center font-mono text-4xl font-semibold">
+        <figure>
+          <img
+            src="https://i.gifer.com/origin/ba/ba60429a7e91ea8f097537268b095a47_w200.gif"
+            alt="loading gif"
+          />
+        </figure>
+        <div>Loading....</div>
       </div>
     );
   }
@@ -72,7 +84,10 @@ const RestaurantItem = () => {
         {/* Restaurant Image */}
         <div className="w-1/3 gap-5 flex flex-col">
           <div className="flex justify-center items-center">
-            <button className="w-44 rounded-xl border-2 bg-red-700 flex justify-center items-center text-white px-3 py-2 hover:font-semibold text-xl">
+            <button
+              onClick={handleReserveClick}
+              className="w-44 rounded-xl border-2 bg-red-700 flex justify-center items-center text-white px-3 py-2 hover:border-2 hover:border-red-800 text-xl"
+            >
               Reserve now!!
             </button>
           </div>
@@ -157,7 +172,7 @@ const RestaurantItem = () => {
           ))}
         </div>
         <div className="text-xl">
-          <p className="font-semibold">Helpful Resources:</p>
+          <p className="font-semibold">For further Contact:</p>
           <p className="text-red-700">{restaurant.link}</p>
         </div>
       </div>

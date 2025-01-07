@@ -8,8 +8,8 @@
     "location": "Chennai",
     "priceRange": "₹2000 - ₹7000",
     "rating": 4.5,
-    "features": ["Outdoor Seating", "Live Music", "Casual Dining"],
-    "ambiance": ["Romantic", "Casual"],
+    "features": ["Outdoor Seating", "Live Music", "Casual Dining","Private Rooms"],
+    "ambiance": ["Romantic", "Casual", "Family"],
     "dietaryRestrictions": ["Gluten-Free"],
     "menus": [
       { "dish": "Margherita Pizza", "price": 2000 },
@@ -40,8 +40,8 @@
     "location": "Mumbai",
     "priceRange": "₹2000 - ₹7000",
     "rating": 4.2,
-    "features": ["Family Friendly", "Private Rooms"],
-    "ambiance": ["Family"],
+    "features": ["Live Music","Casual Dining", "Private Rooms"],
+    "ambiance": ["Family", "Romantic", "Casual"],
     "dietaryRestrictions": ["Gluten-Free"],
     "menus": [
       { "dish": "Butter Chicken", "price": 2400 },
@@ -72,7 +72,7 @@
     "location": "Bangalore",
     "priceRange": "₹7000 - ₹12000",
     "rating": 4.3,
-    "features": ["Vegan Options", "Family Friendly", "Organic Menu"],
+    "features": ["Live Music","Outdoor Seating", "Organic Menu","Group Dining"],
     "ambiance": ["Family", "Casual"],
     "dietaryRestrictions": ["Vegan", "Vegetarian"],
     "menus": [
@@ -103,8 +103,8 @@
     "location": "Chennai",
     "priceRange": "₹12000 - ₹17000",
     "rating": 4.0,
-    "features": ["Casual Dining", "Outdoor Seating", "Live Music"],
-    "ambiance": ["Family"],
+    "features": ["Casual Dining", "Outdoor Seating", "Live Music","Group Dining"],
+    "ambiance": ["Family", "Casual"],
     "dietaryRestrictions": ["Gluten-Free"],
     "menus": [
       { "dish": "Mutton Briyani", "price": 13500 },
@@ -134,8 +134,8 @@
     "location": "Mumbai",
     "priceRange": "₹7000 - ₹12000",
     "rating": 4.6,
-    "features": ["Fine Dining", "Outdoor Seating", "Live Music"],
-    "ambiance": ["Family", "Romantic"],
+    "features": ["Casual Dining", "Outdoor Seating", "Live Music","Private Rooms"],
+    "ambiance": ["Family", "Romantic", "Casual"],
     "dietaryRestrictions": ["Gluten-Free"],
     "menus": [
       { "dish": "Crispy Fish-and-Chips", "price": 7800 },
@@ -166,7 +166,7 @@
     "location": "Hyderabad",
     "priceRange": "₹2000 - ₹7000",
     "rating": 4.3,
-    "features": ["Eco-Friendly", "Organic Menu", "Fine Dining"],
+    "features": [ "Organic Menu", "Casual Dining","Live Music","Outdoor Seating"],
     "ambiance": ["Casual", "Romantic"],
     "dietaryRestrictions": ["Vegan", "Vegetarian"],
     "menus": [
@@ -197,8 +197,8 @@
     "location": "Bangalore",
     "priceRange": "₹12000 - ₹17000",
     "rating": 4.7,
-    "features": ["Buffet", "Live Grilling", "Live Music"],
-    "ambiance": ["Casual", "Romantic"],
+    "features": ["Group Dining", "Live Music","Casual Dining"],
+    "ambiance": ["Casual", "Romantic", "Family"],
     "dietaryRestrictions": ["Gluten-Free"],
     "menus": [
       { "dish": "Grilled Chicken", "price": 12800 },
@@ -259,8 +259,8 @@
     "location": "Chennai",
     "priceRange": "₹7000 - ₹12000",
     "rating": 4.1,
-    "features": ["Family Friendly", "Private Rooms"],
-    "ambiance": ["Casual"],
+    "features": ["Outdoor Seating","Casual Dining","Group Dining", "Private Rooms"],
+    "ambiance": ["Family", "Romantic", "Casual"],
     "dietaryRestrictions": ["Vegan", "Vegetarian"],
     "menus": [
       { "dish": "Pizza Margherita", "price": 10400 },
@@ -290,7 +290,7 @@
     "location": "Mumbai",
     "priceRange": "₹2000 - ₹7000",
     "rating": 4.2,
-    "features": ["Family Friendly", "Private Rooms", "Group Dining"],
+    "features": ["Live Music", "Private Rooms", "Group Dining"],
     "ambiance": ["Casual", "Family"],
     "dietaryRestrictions": ["Gluten-Free"],
     "menus": [
@@ -321,7 +321,7 @@
     "location": "Bangalore",
     "priceRange": "₹12000 - ₹17000",
     "rating": 4.5,
-    "features": ["Rooftop Seating", "Live Music", "Outdoor Seating"],
+    "features": ["Casual Dining", "Live Music", "Outdoor Seating"],
     "ambiance": ["Casual", "Family"],
     "dietaryRestrictions": ["Gluten-Free"],
     "menus": [
@@ -352,7 +352,7 @@
     "location": "Hyderabad",
     "priceRange": "₹2000 - ₹7000",
     "rating": 4.3,
-    "features": ["Group Dining", "Organic Menu"],
+    "features": ["Group Dining", "Organic Menu","Live Music","Private Rooms"],
     "ambiance": ["Casual", "Romantic"],
     "dietaryRestrictions": ["Vegan", "Vegetarian"],
     "menus": [
@@ -383,8 +383,8 @@
     "location": "Kolkata",
     "priceRange": "₹7000 - ₹12000",
     "rating": 4.0,
-    "features": ["Outdoor Seating", "Live Music", "Casual Dining"],
-    "ambiance": ["Casual", "Romantic"],
+    "features": ["Outdoor Seating", "Live Music", "Casual Dining","Private Rooms","Organic Menu"],
+    "ambiance": ["Casual", "Romantic", "Family"],
     "dietaryRestrictions": ["Vegan", "Vegetarian"],
     "menus": [
       { "dish": "Pepperoni Pizza", "price": 7900 },
@@ -414,8 +414,8 @@
     "location": "Chennai",
     "priceRange": "₹7000 - ₹12000",
     "rating": 4.7,
-    "features": ["Casual Dining", "Live Music"],
-    "ambiance": ["Family", "Romantic"],
+    "features": ["Casual Dining", "Live Music","Private Rooms"],
+    "ambiance": ["Family", "Romantic", "Casual"],
     "dietaryRestrictions": ["Gluten-Free"],
     "menus": [
       { "dish": "Tikka Masala chicken", "price": 9000 },
@@ -445,8 +445,8 @@
     "location": "Hyderabad",
     "priceRange": "₹12000 - ₹17000",
     "rating": 4.9,
-    "features": ["Takeaway", "Outdoor Seating", "Live Music", "Casual Dining"],
-    "ambiance": ["Casual", "Romantic"],
+    "features": [ "Outdoor Seating", "Live Music", "Casual Dining"],
+    "ambiance": ["Casual"],
     "dietaryRestrictions": ["Gluten-Free"],
     "menus": [
       { "dish": "Lobster Mac and Cheese", "price": 12200 },

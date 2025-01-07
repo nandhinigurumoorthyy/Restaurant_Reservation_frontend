@@ -36,11 +36,11 @@ const Navbar = () => {
       </div>
       <div>
         <Link
-          to=""
+          to="/profilepage"
           type="submit"
-          className="rounded-lg underline-0 border-2 px-3 py-2 gap-2 text-xl bg-red-700 text-white hover:bg-red-800 hover:border-red-700 hover:border-2 flex"
+          className="rounded-lg underline-0 gap-2 text-4xl px-3 py-2 text-red-700 hover:border-red-700 hover:border-2 flex"
         >
-          LogOut
+          <CgProfile />
         </Link>
       </div>
     </div>

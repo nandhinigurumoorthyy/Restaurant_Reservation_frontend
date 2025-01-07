@@ -16,13 +16,12 @@ const Login = () => {
     console.log({ email, password });
 
     axios
-      .post("https://password-reset-flow-server-0ne8.onrender.com/login", {
+      .post("http://localhost:10000/login", {
         email,
         password,
       })
       .then((res) => {
         if (res.data && res.data.user) {
-          localStorage.setItem("name", res.data.user.name);
           navigate("/home");
         } else {
           console.error("Unexpected server response:", res.data);
@@ -69,6 +68,7 @@ const Login = () => {
                 id="email"
                 placeholder="name@example.com"
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
             <div className="mb-3">
@@ -85,16 +85,16 @@ const Login = () => {
                 id="password"
                 placeholder="..........."
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
             <div className="mb-3 mt-2">
-              <Link
-                to="/home"
+              <button
                 className="w-full text-center bg-sky-600 text-white py-2 px-4 rounded-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400"
                 type="submit"
               >
                 LogIn
-              </Link>
+              </button>
             </div>
             <div className="mt-4">
               <p>Create a new account</p>

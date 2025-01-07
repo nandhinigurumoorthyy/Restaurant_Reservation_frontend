@@ -18,12 +18,13 @@ const SearchBar = ({ onSearch }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    onSearch({ searchQuery, ...filters });
+    onSearch({ searchQuery, ...filters }); // Send filters to the parent component
   };
 
   return (
     <div className="p-4 bg-gray-50 rounded shadow-md">
       <form onSubmit={handleSearch} className="flex flex-col gap-4">
+        {/* Search Input */}
         <input
           type="text"
           placeholder="Search Restaurants..."
@@ -32,6 +33,7 @@ const SearchBar = ({ onSearch }) => {
           className="p-2 hover:border-2 hover:border-red-700 rounded w-full"
         />
 
+        {/* Filters */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <select
             name="cuisine"
@@ -110,9 +112,14 @@ const SearchBar = ({ onSearch }) => {
             <option value="">Special Features</option>
             <option value="Outdoor Seating">Outdoor Seating</option>
             <option value="Live Music">Live Music</option>
+            <option value="Casual Dining">Casual Dining</option>
+            <option value="Organic Menu">Organic Menu</option>
+            <option value="Private Rooms">Private Rooms</option>
+            <option value="Group Dining">Group Dining</option>
           </select>
         </div>
 
+        {/* Search Button */}
         <button
           type="submit"
           className="bg-red-700 text-white p-2 font-medium rounded hover:bg-red-800 hover:border-red-700 hover:border-2"

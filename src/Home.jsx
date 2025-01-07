@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import SearchBar from "./SearchBar";
 import pic1 from "../src/images/pic1.jpg";
 import Restaurants from "./Restaurants";
 const Home = () => {
@@ -9,9 +8,6 @@ const Home = () => {
     <>
       <div className="min-h-screen">
         <Navbar />
-        <div className="pt-4">
-          <SearchBar />
-        </div>
         <div>
           <div className="flex justify-center items-center pt-4">
             <div className="flex justify-center items-center gap-3 h-5/6 w-3/4">

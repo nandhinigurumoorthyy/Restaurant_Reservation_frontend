@@ -4,6 +4,8 @@ import Error from "./Error";
 import Frontpage from "./Frontpage";
 import Home from "./Home";
 import Login from "./Login";
+import ProfilePage from "./ProfilePage";
+import ReservePage from "./ReservePage";
 import RestaurantItem from "./RestaurantItem";
 import Restaurants from "./Restaurants";
 import Signup from "./Signup";
@@ -26,6 +28,11 @@ function App() {
             path="/restaurants/:restaurantId"
             element={<RestaurantItem />}
           />
+          <Route
+            path="/restaurants/:restaurantId/reservepage"
+            element={<ReservePage />}
+          />
+          <Route path="/profilepage" element={<ProfilePage />} />
         </Routes>
       </BrowserRouter>
     </>
