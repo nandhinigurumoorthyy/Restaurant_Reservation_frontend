@@ -18,7 +18,7 @@ const Login = () => {
 
     // Make axios request
     axios
-      .post("http://localhost:10000/login", {
+      .post("https://restaurant-reservation-backend-a4q3.onrender.com/login", {
         email,
         password,
         username,
@@ -34,7 +34,6 @@ const Login = () => {
           // Store username and email in localStorage
           localStorage.setItem("username", res.data.user.username);
           localStorage.setItem("email", res.data.user.email);
-         
 
           // Navigate to home page
           navigate("/home");

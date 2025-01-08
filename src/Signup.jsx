@@ -19,7 +19,7 @@ function Signup() {
     console.log({ username, email, password, age, contact });
 
     axios
-      .post("http://localhost:10000/create", {
+      .post("https://restaurant-reservation-backend-a4q3.onrender.com/create", {
         username,
         email,
         password,
@@ -146,7 +146,7 @@ function Signup() {
 
             <div className="mb-3 w-full">
               <button
-                type="submit" 
+                type="submit"
                 className="w-full text-center mt-2 bg-red-700 text-white py-2 px-4 rounded-lg hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-400"
               >
                 SignUp

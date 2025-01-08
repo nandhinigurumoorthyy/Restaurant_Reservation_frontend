@@ -47,7 +47,7 @@ const ReviewPage = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:10000/restaurants/${restaurantId}/review`,
+        `https://restaurant-reservation-backend-a4q3.onrender.com/restaurants/${restaurantId}/review`,
         {
           comments: formData.comments,
           photosLink: formData.photosLink,

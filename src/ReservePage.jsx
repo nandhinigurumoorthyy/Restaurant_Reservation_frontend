@@ -45,7 +45,7 @@ const ReservePage = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:10000/restaurants/${restaurantId}/reservepage`, 
+        `https://restaurant-reservation-backend-a4q3.onrender.com/restaurants/${restaurantId}/reservepage`,
         {
           date: formData.date, // Only send one date
           partySize: formData.partySize,
@@ -84,7 +84,7 @@ const ReservePage = () => {
       order_id: data.id,
       handler: async (response) => {
         try {
-          const verifyUrl = `http://localhost:10000/restaurants/${restaurantId}/reservepage/api/payment/verify`;
+          const verifyUrl = `https://restaurant-reservation-backend-a4q3.onrender.com/restaurants/${restaurantId}/reservepage/api/payment/verify`;
           const { data } = await axios.post(verifyUrl, response);
           console.log(data);
         } catch (error) {
@@ -101,7 +101,7 @@ const ReservePage = () => {
 
   const handlePayment = async () => {
     try {
-      const orderUrl = `http://localhost:10000/restaurants/${restaurantId}/reservepage/api/payment/orders`;
+      const orderUrl = `https://restaurant-reservation-backend-a4q3.onrender.com/restaurants/${restaurantId}/reservepage/api/payment/orders`;
       const { data } = await axios.post(orderUrl, { amount: 2000 });
       console.log(data);
       initPayment(data.data);

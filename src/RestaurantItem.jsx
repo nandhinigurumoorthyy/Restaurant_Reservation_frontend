@@ -28,7 +28,7 @@ const RestaurantItem = () => {
     const fetchReviews = async () => {
       try {
         const response = await fetch(
-          `http://localhost:10000/apirst/reviews/${encodeURIComponent(
+          `https://restaurant-reservation-backend-a4q3.onrender.com/apirst/reviews/${encodeURIComponent(
             restaurant?.name
           )}`
         );

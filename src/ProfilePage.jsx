@@ -20,13 +20,13 @@ const ProfilePage = () => {
       setLoading(true);
       try {
         const bookingsResponse = await axios.get(
-          "http://localhost:10000/api/bookings",
+          "https://restaurant-reservation-backend-a4q3.onrender.com/api/bookings",
           { params: { email } }
         );
         setBookings(bookingsResponse.data);
 
         const reviewsResponse = await axios.get(
-          "http://localhost:10000/api/reviews",
+          "https://restaurant-reservation-backend-a4q3.onrender.com/api/reviews",
           { params: { email } }
         );
         setReviews(reviewsResponse.data);
@@ -53,7 +53,9 @@ const ProfilePage = () => {
   const handleDeleteBooking = async (bookingId) => {
     if (window.confirm("Are you sure you want to delete this booking?")) {
       try {
-        await axios.delete(`http://localhost:10000/api/bookings/${bookingId}`);
+        await axios.delete(
+          `https://restaurant-reservation-backend-a4q3.onrender.com/api/bookings/${bookingId}`
+        );
         setBookings((prevBookings) =>
           prevBookings.filter((booking) => booking._id !== bookingId)
         );
@@ -69,7 +71,9 @@ const ProfilePage = () => {
   const handleDeleteReview = async (reviewId) => {
     if (window.confirm("Are you sure you want to delete this review?")) {
       try {
-        await axios.delete(`http://localhost:10000/api/reviews/${reviewId}`);
+        await axios.delete(
+          `https://restaurant-reservation-backend-a4q3.onrender.com/api/reviews/${reviewId}`
+        );
         setReviews((prevReviews) =>
           prevReviews.filter((review) => review._id !== reviewId)
         );
@@ -96,7 +100,7 @@ const ProfilePage = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:10000/api/bookings/${editingBooking._id}`,
+        `https://restaurant-reservation-backend-a4q3.onrender.com/api/bookings/${editingBooking._id}`,
         editingBooking
       );
       setBookings((prevBookings) =>
@@ -118,7 +122,7 @@ const ProfilePage = () => {
     try {
       const { comments, starRatings, photosLink } = editingReview;
       const response = await axios.put(
-        `http://localhost:10000/api/reviews/${editingReview._id}`,
+        `https://restaurant-reservation-backend-a4q3.onrender.com/api/reviews/${editingReview._id}`,
         { comments, starRatings, photosLink }
       );
       setReviews((prevReviews) =>
