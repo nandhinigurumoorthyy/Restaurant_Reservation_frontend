@@ -32,6 +32,10 @@ const RestaurantItem = () => {
     navigate(`/restaurants/${restaurantId}/reservepage`);
   };
 
+  const handleReview = () => {
+    navigate(`/restaurants/${restaurantId}/review`);
+  };
+
   if (loading) {
     return (
       <div className="flex flex-col h-screen items-center justify-center font-mono text-4xl font-semibold">
@@ -82,13 +86,21 @@ const RestaurantItem = () => {
           </div>
         </div>
         {/* Restaurant Image */}
-        <div className="w-1/3 gap-5 flex flex-col">
+        <div className="w-1/3 gap-2 flex flex-col">
           <div className="flex justify-center items-center">
             <button
               onClick={handleReserveClick}
               className="w-44 rounded-xl border-2 bg-red-700 flex justify-center items-center text-white px-3 py-2 hover:border-2 hover:border-red-800 text-xl"
             >
               Reserve now!!
+            </button>
+          </div>
+          <div className="flex w-full justify-center items-center">
+            <button
+              onClick={handleReview}
+              className="w-64 rounded-xl border-2 bg-red-700 flex justify-center items-center text-white px-3 py-1 hover:border-2 hover:border-red-800 text-xl"
+            >
+              Write a Review...
             </button>
           </div>
           <figure className=" flex justify-center items-center">

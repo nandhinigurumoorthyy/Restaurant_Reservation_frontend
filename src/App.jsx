@@ -8,6 +8,7 @@ import ProfilePage from "./ProfilePage";
 import ReservePage from "./ReservePage";
 import RestaurantItem from "./RestaurantItem";
 import Restaurants from "./Restaurants";
+import ReviewPage from "./ReviewPage";
 import Signup from "./Signup";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -33,6 +34,10 @@ function App() {
             element={<ReservePage />}
           />
           <Route path="/profilepage" element={<ProfilePage />} />
+          <Route
+            path="/restaurants/:restaurantId/review"
+            element={<ReviewPage />}
+          />
         </Routes>
       </BrowserRouter>
     </>
