@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import pic1 from "./images/pic1.jpg";
+import pic1 from "./images/pic1.JPG";
 import Restaurants from "./Restaurants";
 const Home = () => {
   return (
