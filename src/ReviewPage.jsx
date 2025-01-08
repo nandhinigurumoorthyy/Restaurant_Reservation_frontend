@@ -63,7 +63,7 @@ const ReviewPage = () => {
 
       console.log("Review response:", response.data);
       alert(
-        `Review submitted successfully! Check your profile to view or modify it, ${username}.`
+        `Review submitted successfully! Check your profile to modify it, ${username}.`
       );
 
       // Reset form

@@ -10,49 +10,47 @@ const ProfilePage = () => {
   const navigate = useNavigate();
 
   const [bookings, setBookings] = useState([]);
+  const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editingBooking, setEditingBooking] = useState(null);
+  const [editingReview, setEditingReview] = useState(null);
 
   useEffect(() => {
-    const fetchBookings = async () => {
+    const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(
+        const bookingsResponse = await axios.get(
           "http://localhost:10000/api/bookings",
-          {
-            params: { email },
-          }
+          { params: { email } }
         );
-        setBookings(response.data);
+        setBookings(bookingsResponse.data);
+
+        const reviewsResponse = await axios.get(
+          "http://localhost:10000/api/reviews",
+          { params: { email } }
+        );
+        setReviews(reviewsResponse.data);
       } catch (error) {
-        console.error("Error fetching bookings:", error);
+        console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
       }
     };
 
     if (email) {
-      fetchBookings();
+      fetchData();
     }
   }, [email]);
 
-  //handle logout
-  const handleLogout = async () => {
-    try {
-      // Example: Clear session or localStorage (if required)
-      localStorage.removeItem("username");
-      localStorage.removeItem("email");
-
-      // Redirect after successful logout
-      navigate("/");
-    } catch (error) {
-      console.error("Logout failed:", error);
-      // You can display an error message to the user if needed
-    }
+  // Handle logout
+  const handleLogout = () => {
+    localStorage.removeItem("username");
+    localStorage.removeItem("email");
+    navigate("/");
   };
 
   // Handle delete booking
-  const handleDelete = async (bookingId) => {
+  const handleDeleteBooking = async (bookingId) => {
     if (window.confirm("Are you sure you want to delete this booking?")) {
       try {
         await axios.delete(`http://localhost:10000/api/bookings/${bookingId}`);
@@ -67,19 +65,39 @@ const ProfilePage = () => {
     }
   };
 
+  // Handle delete review
+  const handleDeleteReview = async (reviewId) => {
+    if (window.confirm("Are you sure you want to delete this review?")) {
+      try {
+        await axios.delete(`http://localhost:10000/api/reviews/${reviewId}`);
+        setReviews((prevReviews) =>
+          prevReviews.filter((review) => review._id !== reviewId)
+        );
+        alert("Review deleted successfully!");
+      } catch (error) {
+        console.error("Error deleting review:", error);
+        alert("Failed to delete review. Please try again.");
+      }
+    }
+  };
+
   // Handle edit booking
-  const handleEdit = (booking) => {
+  const handleEditBooking = (booking) => {
     setEditingBooking(booking); // Set the selected booking for editing
   };
 
-  // Handle form submission for editing
-  const handleEditSubmit = async (e) => {
+  // Handle edit review
+  const handleEditReview = (review) => {
+    setEditingReview(review); // Set the selected review for editing
+  };
+
+  // Handle form submission for editing bookings
+  const handleEditBookingSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { partySize, date, partyTime } = editingBooking;
       const response = await axios.put(
         `http://localhost:10000/api/bookings/${editingBooking._id}`,
-        { partySize, date, partyTime }
+        editingBooking
       );
       setBookings((prevBookings) =>
         prevBookings.map((booking) =>
@@ -94,15 +112,38 @@ const ProfilePage = () => {
     }
   };
 
+  // Handle form submission for editing reviews
+  const handleEditReviewSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { comments, starRatings, photosLink } = editingReview;
+      const response = await axios.put(
+        `http://localhost:10000/api/reviews/${editingReview._id}`,
+        { comments, starRatings, photosLink }
+      );
+      setReviews((prevReviews) =>
+        prevReviews.map((review) =>
+          review._id === editingReview._id ? response.data : review
+        )
+      );
+      setEditingReview(null);
+      alert("Review updated successfully!");
+    } catch (error) {
+      console.error("Error updating review:", error);
+      alert("Failed to update review. Please try again.");
+    }
+  };
+
   return (
     <div>
       <Navbar />
       <div className="min-h-full mx-4 px-4 pt-3 font-serif">
+        {/* User Info */}
         <figure className="flex items-center justify-center pt-2">
           <img
             className="w-80"
             src="https://www.icegif.com/wp-content/uploads/2023/07/icegif-500.gif"
-            alt=""
+            alt="User"
           />
         </figure>
         <div className="flex gap-4 text-xl">
@@ -114,6 +155,7 @@ const ProfilePage = () => {
           <span>{email}</span>
         </div>
 
+        {/* Bookings Section */}
         <div className="Bookings mt-10">
           <h2 className="text-2xl font-semibold mb-4">Your Bookings:</h2>
           {loading ? (
@@ -129,27 +171,24 @@ const ProfilePage = () => {
                     <strong>Booking Date: </strong> {booking.date}
                   </p>
                   <p>
-                    <strong>Party Size: </strong> {booking.partySize}
+                    <strong>Guests: </strong> {booking.guests}
                   </p>
-                  <p>
-                    <strong>Time: </strong> {booking.partyTime}
-                  </p>
-                  <form className="flex gap-6">
+                  <div className="flex gap-6">
                     <button
                       type="button"
-                      onClick={() => handleEdit(booking)}
-                      className="text-red-700 hover:text-red-800 border-2 border-red-700 rounded-lg px-3 py-1 hover:border-gray-600 hover:bg-red-700 hover:text-white"
+                      onClick={() => handleEditBooking(booking)}
+                      className="text-red-700 border-2 border-red-700 rounded-lg px-3 py-1 hover:border-gray-600 hover:bg-red-700 hover:text-white"
                     >
                       Edit
                     </button>
                     <button
                       type="button"
-                      onClick={() => handleDelete(booking._id)}
-                      className="text-red-700 hover:text-red-800 border-red-700 border-2 rounded-lg px-2 py-1 hover:border-gray-600 hover:bg-red-700 hover:text-white"
+                      onClick={() => handleDeleteBooking(booking._id)}
+                      className="text-red-700 border-red-700 border-2 rounded-lg px-2 py-1 hover:border-gray-600 hover:bg-red-700 hover:text-white"
                     >
                       Delete
                     </button>
-                  </form>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -158,14 +197,78 @@ const ProfilePage = () => {
           )}
         </div>
 
+        {/* Reviews Section */}
+        <div className="Review mt-10">
+          <h2 className="text-2xl font-semibold mb-4">Your Reviews:</h2>
+          {loading ? (
+            <p>Loading reviews...</p>
+          ) : reviews.length > 0 ? (
+            <ul>
+              {reviews.map((review) => (
+                <li key={review._id} className="mb-4 list-disc text-xl">
+                  <p>
+                    <strong>Restaurant Name: </strong> {review.restaurantName}
+                  </p>
+                  <p>
+                    <strong>Restaurant Location: </strong>{" "}
+                    {review.restaurantLocation}
+                  </p>
+                  <p>
+                    <strong>Comments: </strong> {review.comments}
+                  </p>
+                  <figure>
+                    <img
+                      src={review.photosLink}
+                      alt="review image"
+                      className="w-80 h-72"
+                    />
+                  </figure>
+                  <p>
+                    <strong>Star Rating: </strong> {review.starRatings}
+                  </p>
+                  <div className="flex gap-6">
+                    <button
+                      type="button"
+                      onClick={() => handleEditReview(review)}
+                      className="text-red-700 border-2 border-red-700 rounded-lg px-3 py-1 hover:border-gray-600 hover:bg-red-700 hover:text-white"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleDeleteReview(review._id)}
+                      className="text-red-700 border-red-700 border-2 rounded-lg px-2 py-1 hover:border-gray-600 hover:bg-red-700 hover:text-white"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No reviews found for this email.</p>
+          )}
+        </div>
+
+        {/* Edit Booking Section */}
         {editingBooking && (
           <div className="EditBooking mt-10">
             <h2 className="text-2xl font-semibold mb-4">Edit Booking:</h2>
-            <form onSubmit={handleEditSubmit}>
+            <form onSubmit={handleEditBookingSubmit}>
               <div className="pb-2">
                 <label className="text-xl">
                   <span className="font-semibold">Restaurant Name: </span>
-                  <span className="ml-2">{editingBooking.restaurantName}</span>
+                  <input
+                    type="text"
+                    value={editingBooking.restaurantName}
+                    onChange={(e) =>
+                      setEditingBooking((prev) => ({
+                        ...prev,
+                        restaurantName: e.target.value,
+                      }))
+                    }
+                    className="w-full p-2 border"
+                  />
                 </label>
               </div>
               <div className="pb-2">
@@ -180,41 +283,24 @@ const ProfilePage = () => {
                         date: e.target.value,
                       }))
                     }
+                    className="w-full p-2 border"
                   />
                 </label>
               </div>
               <div className="pb-2">
                 <label className="text-xl">
-                  <span className="font-semibold">Party Size: </span>
+                  <span className="font-semibold">Guests: </span>
                   <input
                     type="number"
-                    value={editingBooking.partySize}
+                    value={editingBooking.guests}
                     onChange={(e) =>
                       setEditingBooking((prev) => ({
                         ...prev,
-                        partySize: e.target.value,
+                        guests: e.target.value,
                       }))
                     }
+                    className="w-20 p-1 border"
                   />
-                </label>
-              </div>
-              <div className="pb-2">
-                <label className="text-xl">
-                  <span className="font-semibold">Party Time: </span>
-                  <select
-                    value={editingBooking.partyTime}
-                    onChange={(e) =>
-                      setEditingBooking((prev) => ({
-                        ...prev,
-                        partyTime: e.target.value,
-                      }))
-                    }
-                  >
-                    <option value="Morning">Morning</option>
-                    <option value="Lunch">Lunch</option>
-                    <option value="Evening">Evening</option>
-                    <option value="Dinner">Dinner</option>
-                  </select>
                 </label>
               </div>
               <button
@@ -225,7 +311,7 @@ const ProfilePage = () => {
               </button>
               <button
                 type="button"
-                className="mt-2 border-2 border-red-700 text-red-700 hover:bg-red-700 hover:text-white mr-2 px-2 py-1 rounded-lg"
+                className="mt-2 border-2 border-red-700 text-red-700 hover:bg-red-700 hover:text-white px-2 py-1 rounded-lg"
                 onClick={() => setEditingBooking(null)}
               >
                 Cancel
@@ -234,15 +320,95 @@ const ProfilePage = () => {
           </div>
         )}
 
+        {/* Edit Review Section */}
+        {editingReview && (
+          <div className="EditReview mt-10">
+            <h2 className="text-2xl font-semibold mb-4">Edit Review:</h2>
+            <form onSubmit={handleEditReviewSubmit}>
+              <div className="pb-2">
+                <label className="text-xl">
+                  <span className="font-semibold">Restaurant Name: </span>
+                  <span className="ml-2">{editingReview.restaurantName}</span>
+                </label>
+              </div>
+              <div className="pb-2">
+                <label className="text-xl">
+                  <span className="font-semibold">Comments: </span>
+                  <textarea
+                    value={editingReview.comments}
+                    onChange={(e) =>
+                      setEditingReview((prev) => ({
+                        ...prev,
+                        comments: e.target.value,
+                      }))
+                    }
+                    rows="3"
+                    className="w-full p-2 border"
+                  />
+                </label>
+              </div>
+
+              <div className="pb-2">
+                <label className="text-xl">
+                  <span className="font-semibold">photosLink: </span>
+                  <input
+                    type="url"
+                    value={editingReview.photosLink}
+                    onChange={(e) =>
+                      setEditingReview((prev) => ({
+                        ...prev,
+                        photosLink: e.target.value,
+                      }))
+                    }
+                    rows="3"
+                    className="w-full p-2 border"
+                  />
+                </label>
+              </div>
+
+              <div className="pb-2">
+                <label className="text-xl">
+                  <span className="font-semibold">Star Rating: </span>
+                  <input
+                    type="number"
+                    value={editingReview.starRatings}
+                    onChange={(e) =>
+                      setEditingReview((prev) => ({
+                        ...prev,
+                        starRatings: e.target.value,
+                      }))
+                    }
+                    min="1"
+                    max="5"
+                    className="w-20 p-1 border"
+                  />
+                </label>
+              </div>
+              <button
+                type="submit"
+                className="mt-2 border-2 border-red-700 text-red-700 hover:bg-red-700 hover:text-white mr-4 px-2 py-1 rounded-lg"
+              >
+                Save Changes
+              </button>
+              <button
+                type="button"
+                className="mt-2 border-2 border-red-700 text-red-700 hover:bg-red-700 hover:text-white px-2 py-1 rounded-lg"
+                onClick={() => setEditingReview(null)}
+              >
+                Cancel
+              </button>
+            </form>
+          </div>
+        )}
+
+        {/* Logout Section */}
         <div className="pt-4">
-          <form>
-            <button
-              onClick={handleLogout}
-              className="text-white hover:border-2 border-red-700 border-4 px-4 text-xl py-2 rounded-xl hover:border-gray-400 bg-red-700"
-            >
-              LogOut
-            </button>
-          </form>
+          <button
+            onClick={handleLogout}
+            className="text-white hover:border-2 border-red-700 border-4 px-4 text-xl py-2 rounded-xl hover:border-gray-400 bg-red-700"
+          >
+            LogOut
+          </button>
         </div>
       </div>
       <Footer />
