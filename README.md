@@ -1,75 +1,103 @@
+# Restaurant Reservation Frontend
 
-# Password Reset Frontend
-
-This repository contains the frontend code for a password reset flow application. The frontend is built using **React** with **Vite**, styled with **Bootstrap**, and deployed on **Netlify**.
-
----
-
-## Features
-
-- User Signup
-- User Login
-- Password Reset
-- Responsive Design
-- Integration with Backend API
+This project is a restaurant reservation system built with React, Tailwind CSS, Node.js, MongoDB, and Axios. It provides functionality for users to browse restaurants, make reservations, submit reviews, login, signup, and manage their profiles.
 
 ---
 
-## Prerequisites
-
-- Node.js installed
-- Backend URL for API integration
-- Netlify account for deployment (if hosting the app on Netlify)
-
----
-
-## Installation and Setup
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/nandhinigurumoorthyy/Password-reset-flow-client.git
-   cd Password-reset-flow-client
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Create a `.env` file in the root directory and add the following variable:
-   ```env
-   VITE_API_URL=<your-backend-api-url>
-   ```
-   Replace `<your-backend-api-url>` with the URL of your deployed backend (`https://password-reset-flow-server-0ne8.onrender.com`).
-
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-   The application will run on `http://localhost:10000`.
+## Features:
+- **Restaurant Listing**: Displays a list of restaurants fetched from `restaurant.json`.
+- **Search and Filter**: Allows users to search for restaurants based on cuisine, price range, location, and other criteria.
+- **Reservation**: Enables users to view restaurant details and make reservations.
+- **Review Management**: Users can create, edit, and delete reviews for restaurants.
+- **Authentication**: Includes a login and signup page with user authentication and session management using MongoDB and Node.js.
+- **Profile Page**: Users can view and manage their profile information, including past reservations and reviews.
 
 ---
 
-## Deployment on Netlify
-
-1. Create a Netlify account at [https://netlify.com](https://netlify.com).
-2. Create a new site:
-   - Connect your GitHub repository containing the frontend code.
-   - Set up the build and deploy settings:
-     - **Build Command**: `npm run build`
-     - **Publish Directory**: `dist`
-   - Add the following environment variable in the **Environment Variables** section of Netlify:
-     - `VITE_API_URL=<your-backend-api-url>`
-3. Deploy your site.
-4. After deployment, Netlify will provide you with a URL (`https://password-reset-flow-client-ui.netlify.app`).
+## Tech Stack:  
+  - React
+  - Tailwind CSS
 
 ---
 
-## API Integration
+## Prerequisites:
+- Node.js and npm should be installed on your local machine.
+- MongoDB should be set up and running on your local system.
 
-Ensure your application is using the correct backend API URL. For example, your API calls in the code should look like:
-```javascript
-const API_URL = import.meta.env.VITE_API_URL;
-axios.post(`${API_URL}/create`, { name, email, password });
-```
+### **Backend Setup**:
+You need to set up the backend to connect to MongoDB and handle API routes for login, signup, profile, reservation, and review operations.
+
+---
+
+### **Frontend Setup**:
+
+1. **Navigate to the frontend directory**:
+
+
+2. **Install dependencies**:
+ 
+
+3. **Start the frontend**:
+ 
+
+4. **Open your browser and go to `http://localhost:10000`** to view the application.
+
+---
+
+## **Core Features**
+
+### 1. **Login and Signup**:
+- **Login**: Users can authenticate using their email and password, and once logged in, they receive a JWT token for authentication.
+- **Signup**: Users can create a new account by entering their name, email, and password, and this information is stored in MongoDB.
+
+#### **Login.js & Signup.js**:
+- Simple forms that capture user credentials and communicate with the backend via Axios.
+
+### 2. **Profile Page**:
+- **Profile**: Users can view and edit their profile information, including their name, email, and previously made reservations.
+- **Reservations**: Displays a list of past and upcoming reservations made by the user.
+- **Reviews**: Users can view, edit, or delete their restaurant reviews.
+
+#### **Profile.js**:
+- Displays user profile information and handles user edits.
+- Displays user’s past reservations and reviews.
+
+### 3. **Reservation Page**:
+- **Reservation**: Allows users to select a restaurant, choose a date, party size, and submit a reservation request.
+- **Confirmation**: Sends the reservation details to the backend, which stores it in MongoDB.
+
+#### **ReservationPage.js**:
+- Contains a form for users to fill out reservation details and makes API calls to the backend for storage.
+
+### 4. **Review Page**:
+- **Review**: Users can create reviews for the restaurants they have visited.
+- **Edit/Delete**: Users can edit or delete their reviews.
+
+#### **ReviewPage.js & ReviewForm.js**:
+- Displays a list of restaurant reviews.
+- Provides forms to create and edit reviews, which are sent to the backend using Axios.
+
+---
+
+### **How It Works**:
+1. **Restaurant Data**: The restaurant data is fetched from `restaurant.json` in the frontend and used for listing and displaying details.
+2. **Filters**: Filters allow users to narrow down restaurants by cuisine, price range, location, etc.
+3. **Reservation**: Users can select a date, party size, and time to make a reservation, which is sent to the backend via Axios.
+4. **Review**: Users can leave reviews for the restaurants they visited.
+5. **Profile**: Users can manage their profile, view past reservations, and review history.
+
+---
+
+## **Dependencies**:
+- **Backend**: `express`, `mongoose`, `bcryptjs`, `jsonwebtoken`, `cors`, `axios`
+- **Frontend**: `react`, `react-router-dom`, `axios`, `tailwindcss`
+
+---
+
+## **Tailwind CSS**:
+This project uses **Tailwind CSS** for styling. Customize Tailwind by editing the `tailwind.config.js` file according to your design needs.
+
+---
+
+## **License**:
+This project is licensed under the MIT License.
