@@ -122,7 +122,31 @@ const RestaurantItem = () => {
           />
         </div>
       </div>
+      {/* Restaurant Additional Details */}
+      <div className="px-4 mx-4 mt-6">
+        <h2 className="text-2xl font-semibold mb-4">Menu:</h2>
+        <ul className="pl-5">
+          {restaurant.menus?.map((item, index) => (
+            <li key={index} className="flex text-xl justify-between w-96">
+              <p className="flex gap-3 justify-between w-96">
+                <span>{item.dish}</span>
+                <span className="text-gray-600 font-semibold">
+                  ₹{item.price}
+                </span>
+              </p>
+            </li>
+          ))}
+        </ul>
 
+        <h2 className="text-2xl font-semibold mt-6">Features:</h2>
+        <ul className="pl-5">
+          {restaurant.features?.map((feature, index) => (
+            <li key={index} className="text-xl list-disc">
+              {feature}
+            </li>
+          ))}
+        </ul>
+      </div>
       <div className="flex gap-3 flex-col px-4 mx-4 pt-5">
         <div className="text-xl">
           <p>
@@ -171,31 +195,8 @@ const RestaurantItem = () => {
           <p className="text-red-700">{restaurant.link}</p>
         </div>
       </div>
-      {/* Restaurant Additional Details */}
+
       <div className="px-4 mx-4 mt-6">
-        <h2 className="text-2xl font-semibold mb-4">Menu:</h2>
-        <ul className="pl-5">
-          {restaurant.menus?.map((item, index) => (
-            <li key={index} className="flex text-xl justify-between w-96">
-              <p className="flex gap-3 justify-between w-96">
-                <span>{item.dish}</span>
-                <span className="text-gray-600 font-semibold">
-                  ₹{item.price}
-                </span>
-              </p>
-            </li>
-          ))}
-        </ul>
-
-        <h2 className="text-2xl font-semibold mt-6">Features:</h2>
-        <ul className="pl-5">
-          {restaurant.features?.map((feature, index) => (
-            <li key={index} className="text-xl list-disc">
-              {feature}
-            </li>
-          ))}
-        </ul>
-
         <h2 className="text-2xl font-semibold mt-6">Reviews:</h2>
         <div className="mt-4">
           {reviews.length > 0 ? (
