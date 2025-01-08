@@ -50,7 +50,12 @@ You need to set up the backend to connect to MongoDB and handle API routes for l
 - **Login**: Users can authenticate using their email and password, and once logged in, they receive a JWT token for authentication.
 - **Signup**: Users can create a new account by entering their name, email, and password, and this information is stored in MongoDB.
 
-#### **Login.js & Signup.js**:
+#### **Backend - index.js**:
+- Handles signup and login routes.
+- Validates email and password.
+- Uses MongoDB for user data storage.
+
+#### **Frontend - Login.js & Signup.js**:
 - Simple forms that capture user credentials and communicate with the backend via Axios.
 
 ### 2. **Profile Page**:
@@ -58,7 +63,11 @@ You need to set up the backend to connect to MongoDB and handle API routes for l
 - **Reservations**: Displays a list of past and upcoming reservations made by the user.
 - **Reviews**: Users can view, edit, or delete their restaurant reviews.
 
-#### **Profile.js**:
+#### **Backend - User Model**:
+- Retrieves user profile information using Mongoose and MongoDB.
+- Stores and retrieves reservations and reviews associated with the user.
+
+#### **Frontend - ProfilePage.js**:
 - Displays user profile information and handles user edits.
 - Displays user’s past reservations and reviews.
 
@@ -66,17 +75,24 @@ You need to set up the backend to connect to MongoDB and handle API routes for l
 - **Reservation**: Allows users to select a restaurant, choose a date, party size, and submit a reservation request.
 - **Confirmation**: Sends the reservation details to the backend, which stores it in MongoDB.
 
-#### **ReservationPage.js**:
+#### **Backend - index.js**:
+- API routes handle creating, retrieving, editing, and deleting reservations.
+- Stores reservation data in the MongoDB database.
+
+#### **Frontend - ReservationPage.js**:
 - Contains a form for users to fill out reservation details and makes API calls to the backend for storage.
 
 ### 4. **Review Page**:
 - **Review**: Users can create reviews for the restaurants they have visited.
 - **Edit/Delete**: Users can edit or delete their reviews.
+  
+#### **Backend - index.js**:
+- Handles review creation, update, and deletion using MongoDB.
+- Stores reviews and manages the relationship between users and reviews.
 
-#### **ReviewPage.js & ReviewForm.js**:
+#### **Frontend - ReviewPage.js**:
 - Displays a list of restaurant reviews.
 - Provides forms to create and edit reviews, which are sent to the backend using Axios.
-
 ---
 
 ### **How It Works**:
@@ -89,7 +105,7 @@ You need to set up the backend to connect to MongoDB and handle API routes for l
 ---
 
 ## **Dependencies**:
-- **Backend**: `express`, `mongoose`, `bcryptjs`, `jsonwebtoken`, `cors`, `axios`
+- **Backend**: `express`, `mongoose`, `jsonwebtoken`, `cors`, `axios`
 - **Frontend**: `react`, `react-router-dom`, `axios`, `tailwindcss`
 
 ---
