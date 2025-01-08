@@ -41,13 +41,13 @@ const Restaurants = () => {
         !searchQuery ||
         rst.name.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesCuisine = !cuisine || rst.cuisine === cuisine;
-      const matchesPrice =
-        !priceRange || rst.priceRange === parseInt(priceRange, 10);
+
       const matchesLocation = !location || rst.location === location;
       const matchesDietary =
         !dietary || rst.dietaryRestrictions.includes(dietary);
       const matchesAmbiance = !ambiance || rst.ambiance.includes(ambiance);
       const matchesFeatures = !features || rst.features.includes(features);
+      const matchesPrice = !priceRange || rst.priceRange.includes(priceRange);
 
       return (
         matchesQuery &&

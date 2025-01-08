@@ -171,7 +171,10 @@ const ProfilePage = () => {
                     <strong>Booking Date: </strong> {booking.date}
                   </p>
                   <p>
-                    <strong>Guests: </strong> {booking.guests}
+                    <strong>Party Size: </strong> {booking.partySize}
+                  </p>
+                  <p>
+                    <strong>Time: </strong> {booking.partyTime}
                   </p>
                   <div className="flex gap-6">
                     <button
@@ -196,6 +199,94 @@ const ProfilePage = () => {
             <p>No bookings found for this email.</p>
           )}
         </div>
+
+        {/* Edit Booking Section */}
+        {editingBooking && (
+          <div className="EditBooking mt-10">
+            <h2 className="text-2xl font-semibold mb-4">Edit Booking:</h2>
+            <form onSubmit={handleEditBookingSubmit}>
+              <div className="pb-2">
+                <label className="text-xl">
+                  <span className="font-semibold pr-5">Restaurant Name: </span>
+                  <input
+                    type="text"
+                    value={editingBooking.restaurantName}
+                    onChange={(e) =>
+                      setEditingBooking((prev) => ({
+                        ...prev,
+                        restaurantName: e.target.value,
+                      }))
+                    }
+                    className="w-full p-2 border"
+                  />
+                </label>
+              </div>
+              <div className="pb-2">
+                <label className="text-xl">
+                  <span className="font-semibold pr-5">Booking Date: </span>
+                  <input
+                    type="date"
+                    value={editingBooking.date}
+                    onChange={(e) =>
+                      setEditingBooking((prev) => ({
+                        ...prev,
+                        date: e.target.value,
+                      }))
+                    }
+                    className="w-full p-2 border"
+                  />
+                </label>
+              </div>
+              <div className="pb-2">
+                <label className="text-xl">
+                  <span className="font-semibold">Party Time: </span>
+                  <select
+                    value={editingBooking.partyTime}
+                    onChange={(e) =>
+                      setEditingBooking((prev) => ({
+                        ...prev,
+                        partyTime: e.target.value,
+                      }))
+                    }
+                  >
+                    <option value="Morning">Morning</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Evening">Evening</option>
+                    <option value="Dinner">Dinner</option>
+                  </select>
+                </label>
+              </div>
+              <div className="text-xl pb-3">
+                <label>
+                  <span className="font-semibold pr-5">Party Size:</span>
+                  <input
+                    type="number"
+                    value={editingBooking.partySize}
+                    onChange={(e) =>
+                      setEditingBooking((prev) => ({
+                        ...prev,
+                        partySize: e.target.value,
+                      }))
+                    }
+                  />
+                </label>
+              </div>
+              <button
+                type="submit"
+                className="mt-2 border-2 border-red-700 text-red-700 hover:bg-red-700 hover:text-white mr-4 px-2 py-1 rounded-lg"
+              >
+                Save Changes
+              </button>
+              <button
+                type="button"
+                className="mt-2 border-2 border-red-700 text-red-700 hover:bg-red-700 hover:text-white px-2 py-1 rounded-lg"
+                onClick={() => setEditingBooking(null)}
+              >
+                Cancel
+              </button>
+            </form>
+          </div>
+        )}
 
         {/* Reviews Section */}
         <div className="Review mt-10">
@@ -224,7 +315,8 @@ const ProfilePage = () => {
                     />
                   </figure>
                   <p>
-                    <strong>Star Rating: </strong> {review.starRatings}
+                    <strong>Star Rating: </strong> {review.starRatings}{" "}
+                  ⭐
                   </p>
                   <div className="flex gap-6">
                     <button
@@ -249,76 +341,6 @@ const ProfilePage = () => {
             <p>No reviews found for this email.</p>
           )}
         </div>
-
-        {/* Edit Booking Section */}
-        {editingBooking && (
-          <div className="EditBooking mt-10">
-            <h2 className="text-2xl font-semibold mb-4">Edit Booking:</h2>
-            <form onSubmit={handleEditBookingSubmit}>
-              <div className="pb-2">
-                <label className="text-xl">
-                  <span className="font-semibold">Restaurant Name: </span>
-                  <input
-                    type="text"
-                    value={editingBooking.restaurantName}
-                    onChange={(e) =>
-                      setEditingBooking((prev) => ({
-                        ...prev,
-                        restaurantName: e.target.value,
-                      }))
-                    }
-                    className="w-full p-2 border"
-                  />
-                </label>
-              </div>
-              <div className="pb-2">
-                <label className="text-xl">
-                  <span className="font-semibold">Booking Date: </span>
-                  <input
-                    type="date"
-                    value={editingBooking.date}
-                    onChange={(e) =>
-                      setEditingBooking((prev) => ({
-                        ...prev,
-                        date: e.target.value,
-                      }))
-                    }
-                    className="w-full p-2 border"
-                  />
-                </label>
-              </div>
-              <div className="pb-2">
-                <label className="text-xl">
-                  <span className="font-semibold">Guests: </span>
-                  <input
-                    type="number"
-                    value={editingBooking.guests}
-                    onChange={(e) =>
-                      setEditingBooking((prev) => ({
-                        ...prev,
-                        guests: e.target.value,
-                      }))
-                    }
-                    className="w-20 p-1 border"
-                  />
-                </label>
-              </div>
-              <button
-                type="submit"
-                className="mt-2 border-2 border-red-700 text-red-700 hover:bg-red-700 hover:text-white mr-4 px-2 py-1 rounded-lg"
-              >
-                Save Changes
-              </button>
-              <button
-                type="button"
-                className="mt-2 border-2 border-red-700 text-red-700 hover:bg-red-700 hover:text-white px-2 py-1 rounded-lg"
-                onClick={() => setEditingBooking(null)}
-              >
-                Cancel
-              </button>
-            </form>
-          </div>
-        )}
 
         {/* Edit Review Section */}
         {editingReview && (
@@ -382,6 +404,7 @@ const ProfilePage = () => {
                     max="5"
                     className="w-20 p-1 border"
                   />
+            
                 </label>
               </div>
               <button

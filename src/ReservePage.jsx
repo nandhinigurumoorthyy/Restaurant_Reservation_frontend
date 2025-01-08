@@ -45,7 +45,7 @@ const ReservePage = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:10000/restaurants/${restaurantId}/reservepage`, // Your backend endpoint
+        `http://localhost:10000/restaurants/${restaurantId}/reservepage`, 
         {
           date: formData.date, // Only send one date
           partySize: formData.partySize,
@@ -74,6 +74,40 @@ const ReservePage = () => {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const initPayment = (data) => {
+    const options = {
+      key: "rzp_test_hoj1WmskuaDPIN",
+      amount: 2000,
+      description: "Reservation Transaction",
+      order_id: data.id,
+      handler: async (response) => {
+        try {
+          const verifyUrl = `http://localhost:10000/restaurants/${restaurantId}/reservepage/api/payment/verify`;
+          const { data } = await axios.post(verifyUrl, response);
+          console.log(data);
+        } catch (error) {
+          console.log(error);
+        }
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
+    const rzp1 = new window.Razorpay(options);
+    rzp1.open();
+  };
+
+  const handlePayment = async () => {
+    try {
+      const orderUrl = `http://localhost:10000/restaurants/${restaurantId}/reservepage/api/payment/orders`;
+      const { data } = await axios.post(orderUrl, { amount: 2000 });
+      console.log(data);
+      initPayment(data.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   if (!restaurant) {
@@ -174,12 +208,23 @@ const ReservePage = () => {
             />
           </div>
 
-          <div className="mt-5">
+          <div className="mt-4">
             <button
               type="submit"
-              className="w-full bg-red-700 text-white p-3 rounded-xl"
+              className="w-full bg-red-700 text-white px-3 py-2 hover:border-2 hover:border-gray-600 rounded-xl"
             >
               Confirm Reservation
+            </button>
+          </div>
+        </form>
+        <form>
+          <div className="mt-4">
+            <button
+              type="button"
+              onClick={handlePayment}
+              className="w-2/6 border-red-700 text-red-800 border-2 px-3 py-2 rounded-xl hover:border-4 hover:border-gray-600"
+            >
+              Pay an advance to secure your booking....
             </button>
           </div>
         </form>

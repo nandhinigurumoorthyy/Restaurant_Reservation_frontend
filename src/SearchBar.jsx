@@ -49,6 +49,8 @@ const SearchBar = ({ onSearch }) => {
             <option value="Italian">Italian</option>
           </select>
 
+         
+
           <select
             name="priceRange"
             value={filters.priceRange}
@@ -56,13 +58,9 @@ const SearchBar = ({ onSearch }) => {
             className="p-2 hover:border-2 hover:border-red-700 rounded"
           >
             <option value="">Price Range</option>
-            {Array.from({ length: 3 }, (_, i) => 2000 + i * 5000).map(
-              (price) => (
-                <option key={price} value={price}>
-                  ₹{price} - ₹{price + 5000}
-                </option>
-              )
-            )}
+            <option value="₹2000 - ₹7000">₹2000 - ₹7000</option>
+            <option value="₹7000 - ₹12000">₹7000 - ₹12000</option>
+            <option value="₹12000 - ₹17000">₹12000 - ₹17000</option>
           </select>
 
           <select
