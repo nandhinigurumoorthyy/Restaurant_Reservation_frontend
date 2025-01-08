@@ -123,6 +123,54 @@ const RestaurantItem = () => {
         </div>
       </div>
 
+      <div className="flex gap-3 flex-col px-4 mx-4 pt-5">
+        <div className="text-xl">
+          <p>
+            <span className="font-semibold">Ambiance:</span>
+            <span className="pl-8">{restaurant.ambiance.join(", ")}</span>
+          </p>
+        </div>
+
+        <div className="text-xl">
+          <p>
+            <span className="font-semibold">Dietary Restrictions:</span>
+            <span className="pl-8">
+              {restaurant.dietaryRestrictions.join(", ")}
+            </span>
+          </p>
+        </div>
+
+        <div className="text-xl flex gap-3 flex-wrap">
+          <p className="font-semibold">Hours of Operation: </p>
+          <ul className="list-outside list-disc pl-8 text-black">
+            {Object.entries(restaurant.hoursOfOperation)?.map(
+              ([day, hours], index) => (
+                <li
+                  key={index}
+                  className="before:content-['\25CB'] before:text-red-600 before:mr-2 list-none" // Custom hollow bullet point in red
+                >
+                  {day}: {hours}
+                </li>
+              )
+            )}
+          </ul>
+        </div>
+        <div className="flex gap-4 overflow-x-auto py-4 justify-between">
+          {restaurant.photos?.map((image, index) => (
+            <div key={index} className="flex-shrink-0">
+              <img
+                src={image}
+                alt={`Image ${index + 1}`}
+                className="w-80 h-52 object-cover rounded-lg shadow-md"
+              />
+            </div>
+          ))}
+        </div>
+        <div className="text-xl">
+          <p className="font-semibold">Helpful Resources:</p>
+          <p className="text-red-700">{restaurant.link}</p>
+        </div>
+      </div>
       {/* Restaurant Additional Details */}
       <div className="px-4 mx-4 mt-6">
         <h2 className="text-2xl font-semibold mb-4">Menu:</h2>
