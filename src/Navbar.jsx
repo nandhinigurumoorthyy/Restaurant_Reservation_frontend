@@ -1,48 +1,111 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { CgProfile } from "react-icons/cg";
 import { IoRestaurant } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { NavLink } from "react-router-dom";
+import "./index.css";
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Auto close menu on large screens
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMenuOpen(false); // Close when resizing to desktop
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="flex justify-around h-24 items-center shadow-xl">
-      <div className="italic flex gap-4 text-4xl text-red-800">
-        <span>
-          <IoRestaurant />
-        </span>
-        <span>ReSTauRanT booKING</span>
-      </div>
-      <div>
-        <div className="flex gap-4 text-xl  font-serif">
-          <Link
-            to="/home"
-            className="hover:text-red-800 text-slate-700 cursor-pointer"
-          >
-            Home
-          </Link>
-          <Link
-            to="/about"
-            className="hover:text-red-800 text-slate-700 cursor-pointer"
-          >
-            About
-          </Link>
-          <Link
-            to="/contact"
-            className="hover:text-red-800 text-slate-700 cursor-pointer"
-          >
-            Contact
-          </Link>
+    <div
+      style={{ backgroundColor: "#341920" }}
+      className="py-4 md:py-6 px-6 md:px-24 flex justify-between items-center text-white relative"
+    >
+      {/* Logo and welcome text */}
+      <div className="italic flex flex-col gap-1">
+        <div className="flex items-center gap-2">
+          <span className="text-3xl md:text-4xl">
+            <IoRestaurant />
+          </span>
+          <span className="text-white dancing-script-regular text-2xl md:text-3xl">
+            Reserve & Dine
+          </span>
+        </div>
+        <div className="text-xs italic pl-2 md:pl-16 lg:pl-16">
+          Welcome to your dining destination!
         </div>
       </div>
-      <div>
-        <Link
+
+      {/* Desktop Nav Links */}
+      <div className="hidden md:flex gap-6 text-lg items-center">
+        {["/home", "/about", "/contact"].map((path, idx) => (
+          <NavLink
+            key={idx}
+            to={path}
+            className={({ isActive }) =>
+              isActive
+                ? "border-b-2 border-white no-underline text-slate-200"
+                : "hover:text-white no-underline text-slate-300 border-b-2 border-transparent hover:border-white"
+            }
+          >
+            {path.replace("/", "").charAt(0).toUpperCase() + path.slice(2)}
+          </NavLink>
+        ))}
+
+        {/* ✅ Profile Icon visible on Desktop */}
+        <NavLink
           to="/profilepage"
-          type="submit"
-          className="rounded-lg underline-0 gap-2 text-4xl px-3 py-2 text-red-700 hover:border-red-700 hover:border-2 flex"
+          className={({ isActive }) =>
+            isActive
+              ? "text-slate-200 text-3xl ml-4"
+              : "hover:text-white text-3xl text-slate-300 ml-4 flex"
+          }
         >
           <CgProfile />
-        </Link>
+        </NavLink>
       </div>
+
+      {/* Hamburger Menu for Mobile */}
+      <div className="md:hidden flex items-center z-50">
+        <button onClick={() => setMenuOpen(!menuOpen)} className="text-4xl">
+          {menuOpen ? <HiX /> : <HiMenuAlt3 />}
+        </button>
+      </div>
+
+      {/* Mobile Dropdown Menu */}
+      {menuOpen && (
+        <div className="absolute top-20 left-0 w-full bg-[#341920] text-center flex flex-col gap-6 py-6 shadow-xl z-40">
+          {["/home", "/about", "/contact"].map((path, idx) => (
+            <NavLink
+              key={idx}
+              to={path}
+              onClick={() => setMenuOpen(false)}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-slate-200 text-lg"
+                  : "hover:text-white text-slate-300 text-lg"
+              }
+            >
+              {path.replace("/", "").charAt(0).toUpperCase() + path.slice(2)}
+            </NavLink>
+          ))}
+          {/* Profile icon in Mobile menu */}
+          <NavLink
+            to="/profilepage"
+            onClick={() => setMenuOpen(false)}
+            className={({ isActive }) =>
+              isActive
+                ? "text-slate-200 text-3xl flex justify-center"
+                : "hover:text-white text-slate-300 text-3xl flex justify-center"
+            }
+          >
+            <CgProfile />
+          </NavLink>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { GiDirectionSign } from "react-icons/gi";
+import { IoRestaurant } from "react-icons/io5";
+import img from "../src/images/sign1.jpg";
+import "./index.css";
 
 function Signup() {
   const [username, setUserName] = useState("");
@@ -42,129 +44,168 @@ function Signup() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-light pt-4 pb-4">
-      <form className="w-2/4" onSubmit={handleSubmit}>
-        <div className="card rounded p-6 shadow-lg bg-white">
-          <div className="card-body">
-            <h3 className="card-title mb-3 text-center flex justify-center items-center gap-3">
-              <span>
-                <GiDirectionSign />
-              </span>
-              SignUp
-            </h3>
-            <h6 className="mb-3 text-gray-600">Create an account</h6>
+    <div className="flex min-h-screen flex-col px-5" style={{backgroundColor:'#341920'}}>
+      {/* logo */}
+      <div className="flex gap-3 pb-3 pt-2 animate-fadeInUp delay-200">
+        <span>
+          <IoRestaurant className="text-white text-2xl" />
+        </span>
+        <span className="text-white dancing-script-regular">
+          Reserve & Dine
+        </span>
+      </div>
 
-            <div className="mb-3">
-              <label
-                htmlFor="username"
-                className="block text-sm font-medium text-gray-700"
-              >
-                User Name
-              </label>
-              <input
-                name="username"
-                type="text"
-                className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                id="username"
-                placeholder="user name"
-                onChange={(e) => setUserName(e.target.value)}
-                required
-              />
-            </div>
+      {/* main content */}
+      <div className="flex justify-center items-center">
+        {/* left side - sign up form */}
+        <form className="w-1/3 h-2/3 animate-fadeInUp delay-200" onSubmit={handleSubmit}>
+          <div className="card shadow-lg bg-pink-200 px-2">
+            <div className="card-body">
+              <h3 className="text-lg text-center flex justify-center items-center font-semibold">
+                Sign up now — where every meal becomes a memory...🥂
+              </h3>
+              <h6 className="mb-2 text-gray-500 font-semibold pl-4">
+                Create an account
+              </h6>
 
-            <div className="mb-3">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Password
-              </label>
-              <input
-                name="password"
-                type="password"
-                className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                id="password"
-                placeholder=".........."
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
+              <div className="px-4">
+                <label
+                  htmlFor="username"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  User Name
+                </label>
+                <input
+                  name="username"
+                  type="text"
+                  className="block  w-60 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  id="username"
+                  placeholder="user name"
+                  onChange={(e) => setUserName(e.target.value)}
+                  required
+                />
+              </div>
 
-            <div className="mb-3">
-              <label
-                htmlFor="age"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Age
-              </label>
-              <input
-                name="age"
-                type="number"
-                className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                id="age"
-                placeholder="age"
-                onChange={(e) => setAge(e.target.value)}
-                required
-              />
-            </div>
+              <div className="px-4 mt-1 pt-1">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Password
+                </label>
+                <input
+                  name="password"
+                  type="password"
+                  className="mt-1 block w-60 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  id="password"
+                  placeholder=".........."
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
 
-            <div className="mb-3">
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Email address
-              </label>
-              <input
-                name="email"
-                type="email"
-                className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                id="email"
-                placeholder="name@example.com"
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
+              <div className="px-4 mt-1 pt-1">
+                <label
+                  htmlFor="age"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Age
+                </label>
+                <input
+                  name="age"
+                  type="number"
+                  className="mt-1 block w-60 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  id="age"
+                  placeholder="age"
+                  onChange={(e) => setAge(e.target.value)}
+                  required
+                />
+              </div>
 
-            <div className="mb-3">
-              <label
-                htmlFor="contact"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Contact
-              </label>
-              <input
-                name="contact"
-                type="tel" // Changed to 'tel' type for phone number input
-                className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                id="contact"
-                placeholder="+91 91234 56789"
-                onChange={(e) => setContact(e.target.value)}
-                required
-              />
-            </div>
+              <div className="px-4 mt-1 pt-1">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Email address
+                </label>
+                <input
+                  name="email"
+                  type="email"
+                  className="mt-1 block w-60 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  id="email"
+                  placeholder="name@example.com"
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
 
-            <div className="mb-3 w-full">
-              <button
-                type="submit"
-                className="w-full text-center mt-2 bg-red-700 text-white py-2 px-4 rounded-lg hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-400"
-              >
-                SignUp
-              </button>
-            </div>
+              <div className="px-4 mt-1 pt-1">
+                <label
+                  htmlFor="contact"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Contact
+                </label>
+                <input
+                  name="contact"
+                  type="tel" // Changed to 'tel' type for phone number input
+                  className="mt-1 block w-60 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  id="contact"
+                  placeholder="+91 91234 56789"
+                  onChange={(e) => setContact(e.target.value)}
+                  required
+                />
+              </div>
 
-            <div className="mt-4 w-full">
-              <p>Already have an account?</p>
-              <Link
-                to="/login"
-                className="w-full text-center bg-sky-600 text-white py-2 px-4 rounded-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400"
-              >
-                LogIn
-              </Link>
+              <div className="w-full mt-1 pt-2 flex justify-center items-center">
+                <button
+                  type="submit"
+                  className="text-center border-2 border-pink-900 py-1 hover:bg-pink-900 hover:text-white px-3 rounded-lg hover:rounded-2xl focus:outline-none focus:ring-2"
+                >
+                  SignUp
+                </button>
+              </div>
+
+              <div className="w-full mt-2 pt-2 flex justify-center items-center gap-2">
+                <p className="mb-2 text-gray-500 font-semibold">
+                  Already have an account?
+                </p>
+                <Link
+                  to="/login"
+                  className="
+    text-center 
+   text-gray-800 
+    no-underline 
+    border-2 
+    border-pink-900 
+    py-1 
+    px-3 
+    rounded-lg
+    focus:outline-none 
+    focus:ring-2 
+    transition-all 
+    duration-300 
+    ease-in-out
+    hover:bg-pink-900 
+    hover:text-white 
+    hover:rounded-2xl
+  "
+                >
+                  LogIn
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </form>
+        </form>
+
+
+{/* Image content */}
+<div className="h-[500px] w-1/2 overflow-hidden ">
+  <img src={img} className="object-cover h-full animate-fadeInUp delay-200 transition-transform duration-500 ease-in hover:scale-105" />
+</div>
+
+      </div>
     </div>
   );
 }

@@ -2,51 +2,60 @@ import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { MdConnectWithoutContact } from "react-icons/md";
+import "./index.css";
+import img from "../src/images/contact.jpg";
 
 const Contact = () => {
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="container mx-auto min-h-full p-6 font-serif">
-        <figure className="flex items-center justify-center pt-5">
-          <img
-            className="h-96 w-3/6"
-            src="https://img.freepik.com/free-photo/talking-client_1098-13119.jpg?t=st=1736232676~exp=1736236276~hmac=a9044dc96f9659f56edf76d02d73f101b9bab4d837ebce5369907cb0770a5953&w=1060"
-            alt=""
-          />
-        </figure>
-        <div className="text-3xl font-semibold text-center items-center justify-center flex gap-6 mb-6">
-          <span className="text-4xl text-red-700">
+
+      {/* Main Wrapper */}
+      <div className="flex flex-col px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-10 flex-grow">
+
+        {/* Title Section */}
+        <div className="py-8 text-2xl sm:text-3xl font-semibold text-center flex gap-3 justify-center items-center">
+          <span className="text-4xl text-pink-950">
             <MdConnectWithoutContact />
           </span>
           <span>Contact Us</span>
         </div>
 
-        <div className="text-center">
-          <p className="text-lg mb-4">
-            Have questions or need assistance with your reservation? We're here
-            to help!<br></br>Feel free to contact us for any inquiries,
-            feedback, or support.
-          </p>
+        {/* Main Content (Image + Text) */}
+        <div className="flex flex-col md:flex-row gap-8 items-center">
 
-          <div className="text-lg">
-            <p>
-              <strong>Restaurant Booking Support:</strong>
+          {/* Image */}
+          <figure className="w-full md:w-1/2 px-2">
+            <img
+              className="w-full h-64 sm:h-96  md:h-[400px] lg:h-[500px] object-cover  rounded-2xl shadow-lg"
+              src={img}
+              alt="Contact"
+            />
+          </figure>
+
+          {/* Contact Content */}
+          <div className="w-full md:w-1/2 flex flex-col justify-center gap-6 text-center">
+            <p className="text-base sm:text-lg leading-relaxed">
+              Have questions or need assistance with your reservation? We're here to help!
+              <br />
+              Feel free to contact us for any inquiries, feedback, or support.
             </p>
-            <p>
-              <strong>Phone:</strong> (+91) 91234 56789
-            </p>
-            <p>
-              <strong>Email:</strong> support@restaurantbooking.com
-            </p>
-            <p>
-              <strong>Operating Hours:</strong> Monday - Friday: 9 AM - 6 PM
-            </p>
+
+            <div className="text-base sm:text-lg space-y-2">
+              <p><strong>Restaurant Booking Support</strong></p>
+              <p>📞 Phone: (+91) 91234 56789</p>
+              <p>📧 Email: support@restaurantbooking.com</p>
+              <p>🕒 Operating Hours: Monday - Friday (9 AM - 6 PM)</p>
+            </div>
           </div>
         </div>
+
+        {/* Optional Spacer */}
+        <div className="flex-grow"></div>
       </div>
+
       <Footer />
-    </>
+    </div>
   );
 };
 

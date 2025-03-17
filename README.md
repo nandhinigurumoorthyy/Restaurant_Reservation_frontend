@@ -4,6 +4,16 @@ This project is a restaurant reservation system built with React, Tailwind CSS, 
 
 ---
 
+## Live Demo:
+👉 [**Click here to view the deployed site**](https://restaurant-reservation-ui.netlify.app/)
+
+---
+
+## Backend GitHub Repository:
+ [**View Backend Code**](https://github.com/nandhinigurumoorthyy/Restaurant_Reservation_backend.git)
+
+---
+
 ## Features:
 - **Restaurant Listing**: Displays a list of restaurants fetched from `restaurant.json`.
 - **Search and Filter**: Allows users to search for restaurants based on cuisine, price range, location, and other criteria.
@@ -11,6 +21,7 @@ This project is a restaurant reservation system built with React, Tailwind CSS, 
 - **Review Management**: Users can create, edit, and delete reviews for restaurants.
 - **Authentication**: Includes a login and signup page with user authentication and session management using MongoDB and Node.js.
 - **Profile Page**: Users can view and manage their profile information, including past reservations and reviews.
+- **Fully Responsive Design**: The application is fully responsive and works seamlessly on mobile, tablet, and desktop devices.
 
 ---
 

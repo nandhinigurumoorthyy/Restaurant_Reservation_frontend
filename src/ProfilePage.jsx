@@ -3,6 +3,12 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import img1 from "../src/images/cont1.jpg";
+import img2 from "../src/images/cont2.jpg";
+import img3 from "../src/images/cont3.jpg";
+import img4 from "../src/images/cont4.jpg";
+import img5 from "../src/images/cont5.jpg";
+import "./index.css";
 
 const ProfilePage = () => {
   const username = localStorage.getItem("username");
@@ -139,303 +145,305 @@ const ProfilePage = () => {
   };
 
   return (
-    <div>
+    <div className=" min-h-screen" style={{ backgroundColor: "#341920" }} >
       <Navbar />
-      <div className="min-h-full mx-4 px-4 pt-3 font-serif">
-        {/* User Info */}
-        <figure className="flex items-center justify-center pt-2">
-          <img
-            className="w-80"
-            src="https://www.icegif.com/wp-content/uploads/2023/07/icegif-500.gif"
-            alt="User"
-          />
-        </figure>
-        <div className="flex gap-4 text-xl">
-          <span className="font-semibold">User Name - </span>
-          <span>{username}</span>
-        </div>
-        <div className="flex gap-4 text-xl">
-          <span className="font-semibold">User Email - </span>
-          <span>{email}</span>
-        </div>
+      <div className="text-white pb-10 ">
+        <div className="overflow-hidden w-full" >
 
-        {/* Bookings Section */}
-        <div className="Bookings mt-10">
-          <h2 className="text-2xl font-semibold mb-4">Your Bookings:</h2>
-          {loading ? (
-            <p>Loading bookings...</p>
-          ) : bookings.length > 0 ? (
-            <ul>
-              {bookings.map((booking) => (
-                <li key={booking._id} className="mb-4 list-disc text-xl">
-                  <p>
-                    <strong>Restaurant Name: </strong> {booking.restaurantName}
-                  </p>
-                  <p>
-                    <strong>Booking Date: </strong> {booking.date}
-                  </p>
-                  <p>
-                    <strong>Party Size: </strong> {booking.partySize}
-                  </p>
-                  <p>
-                    <strong>Time: </strong> {booking.partyTime}
-                  </p>
-                  <div className="flex gap-6">
-                    <button
-                      type="button"
-                      onClick={() => handleEditBooking(booking)}
-                      className="text-red-700 border-2 border-red-700 rounded-lg px-3 py-1 hover:border-gray-600 hover:bg-red-700 hover:text-white"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleDeleteBooking(booking._id)}
-                      className="text-red-700 border-red-700 border-2 rounded-lg px-2 py-1 hover:border-gray-600 hover:bg-red-700 hover:text-white"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </li>
+          {/* Image-content */}
+          <div className="relative w-full overflow-hidden py-10">
+            <div className="flex gap-4 animate-marquee">
+              {/* Images set (duplicated for seamless effect) */}
+              {[img1, img2, img3, img4, img5, img1, img2, img3, img4, img5].map((img, index) => (
+                <img
+                  key={index}
+                  src={img}
+                  alt={`Image ${index + 1}`}
+                  className="w-40 h-32 sm:w-52 sm:h-40 md:w-64 md:h-48 lg:w-80 lg:h-72 object-cover rounded-lg shadow-md"
+                />
               ))}
-            </ul>
-          ) : (
-            <p>No bookings found for this email.</p>
-          )}
-        </div>
-
-        {/* Edit Booking Section */}
-        {editingBooking && (
-          <div className="EditBooking mt-10">
-            <h2 className="text-2xl font-semibold mb-4">Edit Booking:</h2>
-            <form onSubmit={handleEditBookingSubmit}>
-              <div className="pb-2">
-                <label className="text-xl">
-                  <span className="font-semibold pr-5">Restaurant Name: </span>
-                  <input
-                    type="text"
-                    value={editingBooking.restaurantName}
-                    onChange={(e) =>
-                      setEditingBooking((prev) => ({
-                        ...prev,
-                        restaurantName: e.target.value,
-                      }))
-                    }
-                    className="w-full p-2 border"
-                  />
-                </label>
-              </div>
-              <div className="pb-2">
-                <label className="text-xl">
-                  <span className="font-semibold pr-5">Booking Date: </span>
-                  <input
-                    type="date"
-                    value={editingBooking.date}
-                    onChange={(e) =>
-                      setEditingBooking((prev) => ({
-                        ...prev,
-                        date: e.target.value,
-                      }))
-                    }
-                    className="w-full p-2 border"
-                  />
-                </label>
-              </div>
-              <div className="pb-2">
-                <label className="text-xl">
-                  <span className="font-semibold">Party Time: </span>
-                  <select
-                    value={editingBooking.partyTime}
-                    onChange={(e) =>
-                      setEditingBooking((prev) => ({
-                        ...prev,
-                        partyTime: e.target.value,
-                      }))
-                    }
-                  >
-                    <option value="Morning">Morning</option>
-                    <option value="Lunch">Lunch</option>
-                    <option value="Evening">Evening</option>
-                    <option value="Dinner">Dinner</option>
-                  </select>
-                </label>
-              </div>
-              <div className="text-xl pb-3">
-                <label>
-                  <span className="font-semibold pr-5">Party Size:</span>
-                  <input
-                    type="number"
-                    value={editingBooking.partySize}
-                    onChange={(e) =>
-                      setEditingBooking((prev) => ({
-                        ...prev,
-                        partySize: e.target.value,
-                      }))
-                    }
-                  />
-                </label>
-              </div>
-              <button
-                type="submit"
-                className="mt-2 border-2 border-red-700 text-red-700 hover:bg-red-700 hover:text-white mr-4 px-2 py-1 rounded-lg"
-              >
-                Save Changes
-              </button>
-              <button
-                type="button"
-                className="mt-2 border-2 border-red-700 text-red-700 hover:bg-red-700 hover:text-white px-2 py-1 rounded-lg"
-                onClick={() => setEditingBooking(null)}
-              >
-                Cancel
-              </button>
-            </form>
+            </div>
           </div>
-        )}
 
-        {/* Reviews Section */}
-        <div className="Review mt-10">
-          <h2 className="text-2xl font-semibold mb-4">Your Reviews:</h2>
-          {loading ? (
-            <p>Loading reviews...</p>
-          ) : reviews.length > 0 ? (
-            <ul>
-              {reviews.map((review) => (
-                <li key={review._id} className="mb-4 list-disc text-xl">
-                  <p>
-                    <strong>Restaurant Name: </strong> {review.restaurantName}
-                  </p>
-                  <p>
-                    <strong>Restaurant Location: </strong>{" "}
-                    {review.restaurantLocation}
-                  </p>
-                  <p>
-                    <strong>Comments: </strong> {review.comments}
-                  </p>
-                  <figure>
-                    <img
-                      src={review.photosLink}
-                      alt="review image"
-                      className="w-80 h-72"
+
+        </div>
+        <div className="pl-4 pr-4 sm:pl-6 sm:pr-4 md:pl-14 md:pr-14 lg:pl-14 lg:pr-14">
+
+          {/* User Info */}
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6">
+            <div>
+              <div className="flex flex-wrap gap-2 text-base sm:text-lg">
+                <span className="font-semibold">Name:</span>
+                <span>{username}</span>
+              </div>
+              <div className="flex flex-wrap gap-2 text-base sm:text-lg">
+                <span className="font-semibold">Email:</span>
+                <span>{email}</span>
+              </div>
+            </div>
+
+            {/* Logout Section */}
+            <div>
+              <button
+                onClick={handleLogout}
+                className="bg-pink-950 hover:scale-105 text-white px-6 py-2 rounded-xl hover:bg-pink-800 transition-all duration-300 w-full sm:w-auto"
+              >
+                LogOut
+              </button>
+            </div>
+          </div>
+
+
+
+          {/* Bookings Section */}
+          <div className="Bookings mt-10">
+            <h2 className="text-xl sm:text-2xl font-semibold mb-4">📅 Your Bookings</h2>
+            {loading ? (
+              <p>Loading bookings...</p>
+            ) : bookings.length > 0 ? (
+              <ul className="space-y-6">
+                {bookings.map((booking) => (
+                  <li key={booking._id} className="p-4 rounded-lg shadow-md">
+                    <p className="font-semibold text-lg sm:text-xl">{booking.restaurantName}</p>
+                    <p className="text-base sm:text-lg mt-1">
+                      Date: {booking.date.slice(0, 10)}{" "}
+                      <span className="text-gray-500">|</span> Party Size: {booking.partySize}{" "}
+                      <span className="text-gray-500">|</span> Time: {booking.partyTime}
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                      <button
+                        type="button"
+                        onClick={() => handleEditBooking(booking)}
+                        className="bg-pink-950 text-white px-5 py-2 rounded-xl hover:bg-pink-800 transition-all duration-300 w-full sm:w-auto"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteBooking(booking._id)}
+                        className="bg-pink-950 text-white px-5 py-2 rounded-xl hover:bg-pink-800 transition-all duration-300 w-full sm:w-auto"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No bookings found for this email.</p>
+            )}
+          </div>
+
+          {/* Edit Booking Section */}
+          {editingBooking && (
+            <div className="EditBooking mt-10 p-4 rounded-lg shadow-md">
+              <h2 className="text-xl sm:text-2xl font-semibold mb-4">Edit Booking</h2>
+              <form onSubmit={handleEditBookingSubmit}>
+                <div className="flex flex-col gap-3">
+                  <p className="text-lg sm:text-xl">{editingBooking.restaurantName}</p>
+
+                  {/* Booking Date */}
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                    <label className="text-base sm:text-lg font-medium">Booking Date</label>
+                    <input
+                      type="date"
+                      value={editingBooking.date}
+                      onChange={(e) =>
+                        setEditingBooking((prev) => ({
+                          ...prev,
+                          date: e.target.value,
+                        }))
+                      }
+                      className="border rounded-lg px-3 py-1   w-full sm:w-60"
                     />
-                  </figure>
-                  <p>
-                    <strong>Star Rating: </strong> {review.starRatings}{" "}
-                  ⭐
-                  </p>
-                  <div className="flex gap-6">
-                    <button
-                      type="button"
-                      onClick={() => handleEditReview(review)}
-                      className="text-red-700 border-2 border-red-700 rounded-lg px-3 py-1 hover:border-gray-600 hover:bg-red-700 hover:text-white"
+                  </div>
+
+                  {/* Party Time */}
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                    <label className="text-base sm:text-lg font-medium">Party Time</label>
+                    <select
+                      value={editingBooking.partyTime}
+                      onChange={(e) =>
+                        setEditingBooking((prev) => ({
+                          ...prev,
+                          partyTime: e.target.value,
+                        }))
+                      }
+                      className="border rounded-lg px-3 py-1 w-full sm:w-60"
                     >
-                      Edit
+                      <option value="Morning">Morning</option>
+                      <option value="Lunch">Lunch</option>
+                      <option value="Evening">Evening</option>
+                      <option value="Dinner">Dinner</option>
+                    </select>
+                  </div>
+
+                  {/* Party Size */}
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                    <label className="text-base sm:text-lg font-medium">Party Size</label>
+                    <input
+                      type="number"
+                      value={editingBooking.partySize}
+                      onChange={(e) =>
+                        setEditingBooking((prev) => ({
+                          ...prev,
+                          partySize: e.target.value,
+                        }))
+                      }
+                      className="border rounded-lg px-3 py-1 w-full sm:w-60"
+                    />
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                    <button
+                      type="submit"
+                      className="bg-pink-950 text-white px-6 py-2 rounded-xl hover:bg-pink-800 transition-all duration-300 w-full sm:w-auto"
+                    >
+                      Save Changes
                     </button>
                     <button
                       type="button"
-                      onClick={() => handleDeleteReview(review._id)}
-                      className="text-red-700 border-red-700 border-2 rounded-lg px-2 py-1 hover:border-gray-600 hover:bg-red-700 hover:text-white"
+                      className="bg-gray-600 text-white px-6 py-2 rounded-xl hover:bg-gray-500 transition-all duration-300 w-full sm:w-auto"
+                      onClick={() => setEditingBooking(null)}
                     >
-                      Delete
+                      Cancel
                     </button>
                   </div>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>No reviews found for this email.</p>
+                </div>
+              </form>
+            </div>
           )}
-        </div>
 
-        {/* Edit Review Section */}
-        {editingReview && (
-          <div className="EditReview mt-10">
-            <h2 className="text-2xl font-semibold mb-4">Edit Review:</h2>
-            <form onSubmit={handleEditReviewSubmit}>
-              <div className="pb-2">
-                <label className="text-xl">
-                  <span className="font-semibold">Restaurant Name: </span>
-                  <span className="ml-2">{editingReview.restaurantName}</span>
-                </label>
-              </div>
-              <div className="pb-2">
-                <label className="text-xl">
-                  <span className="font-semibold">Comments: </span>
-                  <textarea
-                    value={editingReview.comments}
-                    onChange={(e) =>
-                      setEditingReview((prev) => ({
-                        ...prev,
-                        comments: e.target.value,
-                      }))
-                    }
-                    rows="3"
-                    className="w-full p-2 border"
-                  />
-                </label>
-              </div>
 
-              <div className="pb-2">
-                <label className="text-xl">
-                  <span className="font-semibold">photosLink: </span>
-                  <input
-                    type="url"
-                    value={editingReview.photosLink}
-                    onChange={(e) =>
-                      setEditingReview((prev) => ({
-                        ...prev,
-                        photosLink: e.target.value,
-                      }))
-                    }
-                    rows="3"
-                    className="w-full p-2 border"
-                  />
-                </label>
-              </div>
-
-              <div className="pb-2">
-                <label className="text-xl">
-                  <span className="font-semibold">Star Rating: </span>
-                  <input
-                    type="number"
-                    value={editingReview.starRatings}
-                    onChange={(e) =>
-                      setEditingReview((prev) => ({
-                        ...prev,
-                        starRatings: e.target.value,
-                      }))
-                    }
-                    min="1"
-                    max="5"
-                    className="w-20 p-1 border"
-                  />
-            
-                </label>
-              </div>
-              <button
-                type="submit"
-                className="mt-2 border-2 border-red-700 text-red-700 hover:bg-red-700 hover:text-white mr-4 px-2 py-1 rounded-lg"
-              >
-                Save Changes
-              </button>
-              <button
-                type="button"
-                className="mt-2 border-2 border-red-700 text-red-700 hover:bg-red-700 hover:text-white px-2 py-1 rounded-lg"
-                onClick={() => setEditingReview(null)}
-              >
-                Cancel
-              </button>
-            </form>
+          {/* Reviews Section */}
+          <div className="Review mt-10">
+            <h2 className="text-xl sm:text-2xl font-semibold mb-4">💬 Your Reviews</h2>
+            {loading ? (
+              <p>Loading reviews...</p>
+            ) : reviews.length > 0 ? (
+              <ul className="space-y-6">
+                {reviews.map((review) => (
+                  <li key={review._id} className="p-4 rounded-lg shadow-md">
+                    <p className="font-semibold text-lg sm:text-xl">{review.restaurantName}</p>
+                    <p className="text-base sm:text-lg text-gray-300">{review.restaurantLocation}</p>
+                    <p className="mt-1 text-base sm:text-lg">
+                      {review.comments} <span className="text-gray-500">|</span> {review.starRatings} ⭐
+                    </p>
+                    {review.photosLink && (
+                      <figure className="mt-3">
+                        <img
+                          src={review.photosLink}
+                          alt="review image"
+                          className="w-full sm:w-80 h-52 object-cover rounded-lg shadow"
+                        />
+                      </figure>
+                    )}
+                    <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                      <button
+                        type="button"
+                        onClick={() => handleEditReview(review)}
+                        className="bg-pink-950 text-white px-5 py-2 rounded-xl hover:bg-pink-800 hover:scale-105 transition-all duration-300 w-full sm:w-auto"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteReview(review._id)}
+                        className="bg-pink-950 text-white px-5 py-2 rounded-xl hover:bg-pink-800 hover:scale-105 transition-all duration-300 w-full sm:w-auto"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No reviews found for this email.</p>
+            )}
           </div>
-        )}
 
-        {/* Logout Section */}
-        <div className="pt-4">
-          <button
-            onClick={handleLogout}
-            className="text-white hover:border-2 border-red-700 border-4 px-4 text-xl py-2 rounded-xl hover:border-gray-400 bg-red-700"
-          >
-            LogOut
-          </button>
+          {/* Edit Review Section */}
+          {editingReview && (
+            <div className="EditReview mt-10 p-4 rounded-lg shadow-md">
+              <h2 className="text-xl sm:text-2xl font-semibold mb-4">Edit Review</h2>
+              <form onSubmit={handleEditReviewSubmit}>
+                <div className="flex flex-col gap-3">
+                  <p className="text-lg sm:text-xl">{editingReview.restaurantName}</p>
+
+                  {/* Comments */}
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                    <label className="text-base sm:text-lg font-medium">Comments</label>
+                    <textarea
+                      value={editingReview.comments}
+                      onChange={(e) =>
+                        setEditingReview((prev) => ({
+                          ...prev,
+                          comments: e.target.value,
+                        }))
+                      }
+                      rows="3"
+                      className="border rounded-lg px-4 py-2 w-full sm:w-60"
+                      placeholder="Write your review..."
+                    />
+                  </div>
+
+                  {/* Photo Link */}
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                    <label className="text-base sm:text-lg font-medium">Photo Link</label>
+                    <input
+                      type="url"
+                      value={editingReview.photosLink}
+                      onChange={(e) =>
+                        setEditingReview((prev) => ({
+                          ...prev,
+                          photosLink: e.target.value,
+                        }))
+                      }
+                      className="border rounded-lg px-4 py-2 w-full sm:w-60"
+                      placeholder="https://example.com/image.jpg"
+                    />
+                  </div>
+
+                  {/* Star Rating */}
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                    <label className="text-base sm:text-lg font-medium">Star Rating</label>
+                    <input
+                      type="number"
+                      value={editingReview.starRatings}
+                      onChange={(e) =>
+                        setEditingReview((prev) => ({
+                          ...prev,
+                          starRatings: e.target.value,
+                        }))
+                      }
+                      min="1"
+                      max="5"
+                      className="border rounded-lg px-4 py-2 w-24 sm:w-60"
+                    />
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                    <button
+                      type="submit"
+                      className="bg-pink-950 text-white px-6 py-2 rounded-xl hover:bg-pink-800 transition-all duration-300 w-full sm:w-auto"
+                    >
+                      Save Changes
+                    </button>
+                    <button
+                      type="button"
+                      className="bg-gray-600 text-white px-6 py-2 rounded-xl hover:bg-gray-500 transition-all duration-300 w-full sm:w-auto"
+                      onClick={() => setEditingReview(null)}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          )}
+
         </div>
       </div>
       <Footer />

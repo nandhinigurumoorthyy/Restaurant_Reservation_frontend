@@ -75,92 +75,93 @@ const ReviewPage = () => {
   };
 
   return (
-    <div className="h-full font-serif">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="px-4 mx-4 pt-4">
-        <h1 className="text-3xl font-bold mb-4">Make a Review</h1>
+      <div className="pl-4 pr-4 sm:pl-6 sm:pr-4 md:pl-14 md:pr-14 lg:pl-14 lg:pr-14 py-10 mt-2 flex-grow">
 
-        {/* Show Username and Email */}
-        <div className="flex items-center gap-2 pb-2">
-          <span className="font-semibold text-xl">User Name:</span>
-          <span className="text-xl font-medium">{username}</span>
+        {/* Header */}
+        <div className="flex flex-col mx-auto text-center mb-6">
+          <h1 className="text-2xl sm:text-3xl font-semibold">💬 Make a Review</h1>
+          <p className="text-base sm:text-lg italic mt-1">We value your feedback! Share your experience.</p>
         </div>
-        <div className="flex items-center gap-2 pb-4">
-          <span className="font-semibold text-xl">User Email:</span>
-          <span className="text-xl font-medium">{email}</span>
+
+        {/* User Info */}
+        <div className="space-y-2 mb-4">
+          <p className="text-lg font-semibold">👤 Your Information</p>
+          <div className="flex flex-wrap gap-3">
+            <span className="font-medium">User Name: <span className="text-gray-700">{username}</span></span>
+            <span className="font-medium">User Email: <span className="text-gray-700">{email}</span></span>
+          </div>
         </div>
 
         {/* Restaurant Details */}
-        <div className="mb-3">
-          <h2 className="text-2xl font-semibold">Restaurant Details</h2>
+        <div className="mb-6">
+          <h2 className="text-lg font-semibold">🍽️ Restaurant Details</h2>
           {restaurant.name ? (
-            <>
-              <p className="text-xl">{restaurant.name}</p>
-              <p className="text-gray-600">{restaurant.cuisine}</p>
-              <p className="text-xl">{restaurant.location}</p>
-            </>
+            <div className="mt-1">
+              <p className="text-lg font-semibold">{restaurant.name}</p>
+              <p className="text-base text-gray-700">{restaurant.cuisine} | {restaurant.location}</p>
+            </div>
           ) : (
-            <p className="text-red-500">Restaurant data not available.</p>
+            <p className="text-gray-700">Restaurant data not available.</p>
           )}
         </div>
 
         {/* Review Form */}
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label htmlFor="comments" className="block text-lg font-medium">
-              Comments
-            </label>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Comments */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+            <label htmlFor="comments" className="text-lg font-medium w-32">Comments</label>
             <textarea
               id="comments"
               name="comments"
               value={formData.comments}
               onChange={handleChange}
-              className="border-2 p-2 w-full"
+              className="w-full md:w-72 border-2 rounded-lg p-2 min-h-[100px]"
               required
               placeholder="The food was so delicious, and the service was excellent!"
             />
           </div>
 
-          <div>
-            <label htmlFor="photosLink" className="block text-lg font-medium">
-              Photos Link
-            </label>
+          {/* Photo Link */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+            <label htmlFor="photosLink" className="text-lg font-medium w-32">Photo Link</label>
             <input
               type="url"
               id="photosLink"
               name="photosLink"
               value={formData.photosLink}
               onChange={handleChange}
-              className="border-2 p-2 w-full"
+              className="w-full border-2 rounded-lg p-2 md:w-72"
               placeholder="https://example.com/image.jpg"
               required
             />
           </div>
 
-          <div>
-            <label htmlFor="starRatings" className="block text-lg font-medium">
-              Star Ratings:
-            </label>
+          {/* Star Rating */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+            <label htmlFor="starRatings" className="text-lg font-medium w-32">Star Rating</label>
             <input
               type="number"
               id="starRatings"
               name="starRatings"
               value={formData.starRatings}
               onChange={handleChange}
-              className="border-2 p-2 w-full"
-              placeholder="1 (lowest) to 5 (highest)"
+              className="w-full sm:w-40 border-2 rounded-lg p-2"
+              placeholder="1 to 5"
               required
               min="1"
               max="5"
             />
           </div>
 
-          <div className="mt-5">
+          {/* Submit Button */}
+          <div className="text-center pt-4">
             <button
               type="submit"
-              className="w-full bg-red-700 text-white px-3 py-2 rounded-xl hover:bg-red-800 hover:font-medium hover:border-2 hover:border-gray-500"
+              className="bg-pink-950 text-white px-8 py-2 rounded-xl hover:bg-pink-800 hover:scale-105 transition-all duration-300"
             >
-              Create a Review
+              Submit Review
             </button>
           </div>
         </form>

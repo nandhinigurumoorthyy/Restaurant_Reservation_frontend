@@ -1,43 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import restaurantData from "./Restaurant.json"; // or fetch it from an API
+import restaurantData from "./Restaurant.json";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import axios from "axios";
 
 const ReservePage = () => {
-  const { restaurantId } = useParams(); // Get restaurantId from the URL
+  const { restaurantId } = useParams();
   const navigate = useNavigate();
   const [restaurant, setRestaurant] = useState("");
   const [formData, setFormData] = useState({
-    date: "", // Only one date field now
+    date: "",
     partySize: "",
-    partyTime: "Morning", // Default value for partyTime
-    contact: "", // Add contact field if needed
+    partyTime: "Morning",
+    contact: "",
   });
 
-  const [todayDate, setTodayDate] = useState(""); // For today's date
-
-  // Fetch username and email from localStorage
+  const [todayDate, setTodayDate] = useState("");
   const username = localStorage.getItem("username");
   const email = localStorage.getItem("email");
 
-  // Debugging logs
-  console.log("Username from localStorage:", username);
-  console.log("Email from localStorage:", email);
-
   useEffect(() => {
-    const today = new Date().toISOString().split("T")[0]; // Get today's date in yyyy-mm-dd format
+    const today = new Date().toISOString().split("T")[0];
     setTodayDate(today);
 
     const foundRestaurant = restaurantData.find(
       (rst) => rst.id === parseInt(restaurantId, 10)
     );
     setRestaurant(foundRestaurant);
-
-    // Debugging logs
-    console.log("Restaurant ID from params:", restaurantId);
-    console.log("Found restaurant data:", foundRestaurant);
   }, [restaurantId]);
 
   const handleSubmit = async (e) => {
@@ -47,19 +37,15 @@ const ReservePage = () => {
       const response = await axios.post(
         `https://restaurant-reservation-backend-a4q3.onrender.com/restaurants/${restaurantId}/reservepage`,
         {
-          date: formData.date, // Only send one date
-          partySize: formData.partySize,
-          partyTime: formData.partyTime,
-          restaurantId: restaurantId, // Send restaurantId from params or state
-          contact: formData.contact, // Assuming you've added the contact field in formData
-          username: username, // Use username from localStorage
-          email: email, // Send email
+          ...formData,
+          restaurantId,
+          username,
+          email,
           restaurantName: restaurant.name,
           restaurantLocation: restaurant.location,
         },
-        { withCredentials: true } // Include credentials (cookies) for token
+        { withCredentials: true }
       );
-
       console.log("Reservation response:", response.data);
       alert(`Reservation made successfully! Check your profile, ${username}`);
     } catch (err) {
@@ -91,9 +77,7 @@ const ReservePage = () => {
           console.log(error);
         }
       },
-      theme: {
-        color: "#3399cc",
-      },
+      theme: { color: "#3399cc" },
     };
     const rzp1 = new window.Razorpay(options);
     rzp1.open();
@@ -103,7 +87,6 @@ const ReservePage = () => {
     try {
       const orderUrl = `https://restaurant-reservation-backend-a4q3.onrender.com/restaurants/${restaurantId}/reservepage/api/payment/orders`;
       const { data } = await axios.post(orderUrl, { amount: 2000 });
-      console.log(data);
       initPayment(data.data);
     } catch (error) {
       console.log(error);
@@ -119,112 +102,102 @@ const ReservePage = () => {
   }
 
   return (
-    <div className="h-full font-serif">
+    <div className="min-h-screen">
       <Navbar />
-      <div className="px-4 mx-4 pt-4">
-        <h1 className="text-3xl font-bold mb-4">Make a Reservation</h1>
-        {/* Show Username and Email */}
-        <div className="flex items-center gap-2 pb-2">
-          <span className="font-semibold text-xl">User Name:</span>
-          <span className="text-xl font-medium">{username || "Guest"}</span>
-        </div>
-        <div className="flex items-center gap-2 pb-4">
-          <span className="font-semibold text-xl">User Email:</span>
-          <span className="text-xl font-medium">{email || "Not Provided"}</span>
-        </div>
-        <div className="mb-3">
-          <h2 className="text-2xl font-semibold">Restaurant Details</h2>
-          <p className="text-xl">{restaurant.name}</p>
-          <p className="text-gray-600">{restaurant.cuisine}</p>
-          <p className="text-xl">{restaurant.location}</p>
+      <div className="pl-4 pr-4 sm:pl-6 sm:pr-4 md:pl-14 md:pr-14 lg:pl-14 lg:pr-14 pt-4 pb-16">
+        <div className="text-center mx-auto mb-6">
+          <h1 className="text-2xl md:text-3xl font-bold">🍽️ Make a Reservation</h1>
+          <p className="text-lg italic mt-1">Secure your spot and enjoy a memorable meal.</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label htmlFor="date" className="block text-lg font-medium">
-              Reservation Date:
-            </label>
+        <div className="pb-4 text-lg">
+          <p>👋 Welcome, <span className="font-semibold">{username || "Guest"}</span>!</p>
+          <p>Fill out the details below to secure your dining experience.</p>
+        </div>
+
+        <div className="mb-4">
+          <h2 className="text-lg font-semibold">🏢 Restaurant Details</h2>
+          <p className="font-semibold text-lg">{restaurant.name}</p>
+          <p className="text-lg">{restaurant.cuisine} <span className="text-gray-400">|</span> {restaurant.location}</p>
+        </div>
+
+        <p className="text-lg font-semibold mt-2">📅 Reservation Details</p>
+
+        {/* Reservation Form */}
+        <form onSubmit={handleSubmit} className="space-y-6 mt-4">
+          <div className="flex flex-col md:flex-row md:items-center gap-3">
+            <label htmlFor="date" className="text-lg font-medium min-w-[140px]">Reservation Date</label>
             <input
               type="date"
               id="date"
               name="date"
               value={formData.date}
               onChange={handleChange}
-              className="border-2 p-2 w-full"
-              min={todayDate} // Set minimum date to today
+              className="border-2 rounded-lg p-2 w-full md:w-64"
+              min={todayDate}
               required
             />
           </div>
 
-          <div>
-            <label htmlFor="partySize" className="block text-lg font-medium">
-              Party Size:
-            </label>
+          <div className="flex flex-col md:flex-row md:items-center gap-3">
+            <label htmlFor="partySize" className="text-lg font-medium min-w-[140px]">Party Size</label>
             <input
               type="number"
               id="partySize"
               name="partySize"
               value={formData.partySize}
               onChange={handleChange}
-              className="border-2 p-2 w-full"
+              className="border-2 rounded-lg p-2 w-full md:w-64"
               required
-              placeholder="min:1, max:100"
               min="1"
+              placeholder="min:1, max:100"
             />
           </div>
 
-          <div>
-            <label htmlFor="partyTime" className="block text-lg font-medium">
-              Party Time:
-            </label>
+          <div className="flex flex-col md:flex-row md:items-center gap-3">
+            <label htmlFor="partyTime" className="text-lg font-medium min-w-[140px]">Party Time</label>
             <select
               id="partyTime"
               name="partyTime"
               value={formData.partyTime}
               onChange={handleChange}
-              className="border-2 p-2 w-full"
+              className="border-2 rounded-lg p-2 w-full md:w-64"
               required
             >
               <option value="Morning">Morning (10AM - 12PM)</option>
               <option value="Lunch">Lunch (1PM - 3PM)</option>
-              <option value="Evening">Evening(6PM - 8PM)</option>
-              <option value="Dinner">Dinner(8PM - 10PM)</option>
+              <option value="Evening">Evening (6PM - 8PM)</option>
+              <option value="Dinner">Dinner (8PM - 10PM)</option>
             </select>
           </div>
 
-          <div>
-            <label htmlFor="contact" className="block text-lg font-medium">
-              Contact Number:
-            </label>
+          <div className="flex flex-col md:flex-row md:items-center gap-3">
+            <label htmlFor="contact" className="text-lg font-medium min-w-[140px]">Contact Number</label>
             <input
               type="text"
               id="contact"
               name="contact"
               value={formData.contact}
               onChange={handleChange}
-              className="border-2 p-2 w-full"
+              className="border-2 rounded-lg p-2 w-full md:w-64"
+              placeholder="+91 91234 56789"
               required
-              placeholder="Your contact number"
             />
           </div>
 
-          <div className="mt-4">
+          <div className="flex flex-col md:flex-row gap-4 mt-6">
             <button
               type="submit"
-              className="w-full bg-red-700 text-white px-3 py-2 hover:border-2 hover:border-gray-600 rounded-xl"
+              className="bg-pink-950 text-white px-6 py-2 rounded-xl hover:bg-pink-800 hover:scale-105 transition-all duration-300 w-full md:w-auto"
             >
               Confirm Reservation
             </button>
-          </div>
-        </form>
-        <form>
-          <div className="mt-4">
             <button
               type="button"
               onClick={handlePayment}
-              className="w-2/6 border-red-700 text-red-800 border-2 px-3 py-2 rounded-xl hover:border-4 hover:border-gray-600"
+              className="bg-pink-950 text-white px-6 py-2 rounded-xl hover:bg-pink-800 hover:scale-105 transition-all duration-300 w-full md:w-auto"
             >
-              Pay an advance to secure your booking....
+              Pay an advance to secure your booking
             </button>
           </div>
         </form>

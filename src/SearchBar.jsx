@@ -22,24 +22,25 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <div className="p-4 bg-gray-50 rounded shadow-md">
+    <div className="p-4 bg-gray-50 rounded shadow-md" style={{ backgroundColor: "#341920" }}>
       <form onSubmit={handleSearch} className="flex flex-col gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
         {/* Search Input */}
         <input
           type="text"
           placeholder="Search Restaurants..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="p-2 hover:border-2 hover:border-red-700 rounded w-full"
+          className="cursor-pointer p-2 border-2 border-stone-50 hover:border-pink-900 rounded w-full"
         />
 
         {/* Filters */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        
           <select
             name="cuisine"
             value={filters.cuisine}
             onChange={handleInputChange}
-            className="p-2 hover:border-2 hover:border-red-700 rounded"
+            className="cursor-pointer p-2 border-2 border-stone-50 hover:border-pink-900 rounded"
           >
             <option value="">Cuisine</option>
             <option value="Indian">Indian</option>
@@ -55,7 +56,7 @@ const SearchBar = ({ onSearch }) => {
             name="priceRange"
             value={filters.priceRange}
             onChange={handleInputChange}
-            className="p-2 hover:border-2 hover:border-red-700 rounded"
+            className="cursor-pointer p-2 border-2 border-stone-50 hover:border-pink-900 rounded"
           >
             <option value="">Price Range</option>
             <option value="₹2000 - ₹7000">₹2000 - ₹7000</option>
@@ -67,7 +68,8 @@ const SearchBar = ({ onSearch }) => {
             name="location"
             value={filters.location}
             onChange={handleInputChange}
-            className="p-2 hover:border-2 hover:border-red-700 rounded"
+            className="cursor-pointer p-2 border-2 border-stone-50 hover:border-pink-900 rounded"
+            
           >
             <option value="">Location</option>
             <option value="Chennai">Chennai</option>
@@ -81,7 +83,8 @@ const SearchBar = ({ onSearch }) => {
             name="dietary"
             value={filters.dietary}
             onChange={handleInputChange}
-            className="p-2 hover:border-2 hover:border-red-700 rounded"
+            className="cursor-pointer p-2 border-2 border-stone-50 hover:border-pink-900 rounded"
+           
           >
             <option value="">Dietary Restrictions</option>
             <option value="Vegan">Vegan</option>
@@ -93,7 +96,8 @@ const SearchBar = ({ onSearch }) => {
             name="ambiance"
             value={filters.ambiance}
             onChange={handleInputChange}
-            className="p-2 hover:border-2 hover:border-red-700 rounded"
+            className=" cursor-pointer p-2 border-2 border-stone-50 hover:border-pink-900 rounded"
+           
           >
             <option value="">Ambiance</option>
             <option value="Casual">Casual</option>
@@ -105,7 +109,8 @@ const SearchBar = ({ onSearch }) => {
             name="features"
             value={filters.features}
             onChange={handleInputChange}
-            className="p-2 hover:border-2 hover:border-red-700 rounded"
+            className="cursor-pointer p-2 border-2 border-stone-50 hover:border-pink-900 rounded"
+            
           >
             <option value="">Special Features</option>
             <option value="Outdoor Seating">Outdoor Seating</option>
@@ -118,12 +123,13 @@ const SearchBar = ({ onSearch }) => {
         </div>
 
         {/* Search Button */}
+        <div className="flex justify-center items-center">
         <button
           type="submit"
-          className="bg-red-700 text-white p-2 font-medium rounded hover:bg-red-800 hover:border-red-700 hover:border-2"
+          className="cursor-pointer py-2 px-3 font-medium rounded-2xl hover:bg-white  hover:text-pink-950 border-2 border-white text-stone-50"
         >
           Search
-        </button>
+        </button></div>
       </form>
     </div>
   );

@@ -78,11 +78,11 @@ const Restaurants = () => {
   }
 
   return (
-    <div className="h-full container mx-auto overflow-auto">
+    <div className="h-full container overflow-auto">
       {/* SearchBar Component */}
       <SearchBar onSearch={handleSearch} />
 
-      <div className="flex flex-wrap gap-11 mb-4 pt-5">
+      <div className="flex flex-wrap justify-around pt-5">
         {/* Show "Not Found!" if no results */}
         {filteredRestaurants.length === 0 ? (
           <div className="flex flex-col pt-2 items-center text-red-700 justify-center w-full font-mono text-3xl font-medium">
@@ -100,31 +100,34 @@ const Restaurants = () => {
           </div>
         ) : (
           filteredRestaurants.map((rst) => (
+            <div>
             <div
               key={rst.id}
-              className="w-72 flex justify-around flex-col h-auto hover:bg-zinc-200 p-3"
+              className="w-60 flex justify-around flex-col h-auto hover:rounded-xl hover:bg-zinc-200 p-2"
             >
-              <figure className="flex items-center justify-center">
+              <figure className="flex items-center justify-center ">
                 <img
                   src={rst.title_card_img}
                   alt={rst.name}
-                  className="w-72 h-60"
+                  className="w-72 h-44 object-cover"
                 />
               </figure>
-              <h1 className="text-2xl flex flex-wrap font-semibold font-serif">
+              <h1 className="text-lg flex flex-wrap font-semibold ">
                 {rst.name}
               </h1>
-              <p className="text-gray-500 text-sm">{rst.cuisine}</p>
-              <p className="text-xl">{rst.location}</p>
-              <div className="items-center justify-center flex flex-col gap-4">
+              <p className="text-gray-500 text-xs">{rst.cuisine}</p>
+              <p className="text-sm">{rst.location}</p>
+              <div className="items-center justify-center flex flex-col ">
                 <button
                   onClick={() => navigate(`/restaurants/${rst.id}`)} // Navigate to RestaurantItem
-                  className="items-center justify-center flex p-2 px-3 rounded-md bg-red-100 text-red-800 border-red-800 border-2 hover:font-semibold"
+          className="cursor-pointer py-2 px-3 font-medium rounded-2xl hover:bg-pink-950  hover:text-white border-2 border-pink-950"
+                  
                 >
                   View
                 </button>
               </div>
             </div>
+            <div className=" pb-4"></div></div>
           ))
         )}
       </div>
