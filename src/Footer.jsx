@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div
       style={{ backgroundColor: "#341920" }}
-      className="text-white px-6 py-10"
+      className="text-white px-10 py-10"
     >
       {/* Wrapper - Split layout for md & lg */}
       <div className="flex flex-col md:flex-row justify-between gap-10">
@@ -14,13 +14,15 @@ const Footer = () => {
         {/* Left Side - Logo and Welcome Text */}
         <div className="flex flex-col gap-4 md:w-1/3 lg:w-1/4 items-center md:items-start text-center md:text-left">
           {/* Logo */}
+          <div className="flex flex-col gap-2 w-52">
           <div className="flex gap-2 items-center justify-center md:justify-start">
             <span className="text-3xl"><IoRestaurant /></span>
-            <span className="text-white dancing-script-regular text-2xl">Reserve & Dine</span>
+            <span className="text-white dancing-script-regular text-3xl">Reserve & Dine</span>
           </div>
 
           {/* Welcome Message */}
-          <div className="text-xs italic">Welcome to your dining destination!</div>
+          <div className="text-xs italic text-end">Welcome to your dining destination!</div>
+          </div>
 
           {/* Tagline */}
           <div className="text-sm leading-6 pt-2">
@@ -30,7 +32,7 @@ const Footer = () => {
         </div>
 
         {/* Right Side - All Links */}
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4 w-full">
+        <div className="grid grid-cols-2 justify-items-end gap-8 md:grid-cols-3 lg:grid-cols-4 w-full">
 
           {/* Company */}
           <div>
@@ -105,7 +107,7 @@ const Footer = () => {
           {/* Social Links */}
           <div className="col-span-2 lg:col-span-1">
             <h4 className="font-semibold mb-2">Social Links</h4>
-            <div className="flex gap-4 text-2x pl-0">
+            <div className="flex gap-4 text-2xl">
               <PiWhatsappLogo />
               <PiMetaLogo />
               <PiYoutubeLogo />

@@ -62,12 +62,12 @@ const RestaurantItem = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <div className="pl-2 pr-2 md:pl-14 md:pr-14 pb-5 mb-6 ">
+      <div className="pl-1 pr-1 md:pl-14 md:pr-14 pb-5 mb-6 ">
 
         {/* Title Card */}
         <div className="relative w-full h-[300px] md:h-[400px] overflow-hidden">
           <img src={restaurant.title_card_img} alt={restaurant.name} className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-slate-800 bg-opacity-50 flex flex-col justify-center items-center text-white p-4">
+          <div className="absolute inset-0 bg-slate-800 bg-opacity-50 flex flex-col justify-center items-center text-white ">
             <h1 className="text-3xl md:text-4xl font-bold">{restaurant.name}</h1>
             <p className="mt-2 text-sm md:text-lg text-center">
               🍽️ {restaurant.cuisine} | ⭐ {restaurant.rating} | {restaurant.priceRange} | 📍 {restaurant.location}

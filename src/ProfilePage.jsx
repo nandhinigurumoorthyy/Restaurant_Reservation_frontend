@@ -3,11 +3,11 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import img1 from "../src/images/cont1.jpg";
-import img2 from "../src/images/cont2.jpg";
-import img3 from "../src/images/cont3.jpg";
-import img4 from "../src/images/cont4.jpg";
-import img5 from "../src/images/cont5.jpg";
+import img1 from "./images/cont1.jpg";
+import img2 from "./images/cont2.jpg";
+import img3 from "./images/cont3.jpg";
+import img4 from "./images/cont4.jpg";
+import img5 from "./images/cont5.jpg";
 import "./index.css";
 
 const ProfilePage = () => {

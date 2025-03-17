@@ -1,10 +1,10 @@
 import React from "react";
-import fr1 from "../src/images/frame1.jpg";
-import fr2 from "../src/images/frame2.jpg";
-import fr3 from "../src/images/frame3.jpg";
-import fr4 from "../src/images/frame4.jpg";
-import fr5 from "../src/images/frame5.jpg";
-import fr6 from "../src/images/frame6.jpg";
+import fr1 from "./images/frame1.jpg";
+import fr2 from "./images/frame2.jpg";
+import fr3 from "./images/frame3.jpg";
+import fr4 from "./images/frame4.jpg";
+import fr5 from "./images/frame5.jpg";
+import fr6 from "./images/frame6.jpg";
 import "./index.css";
 
 const FooterContent = () => {

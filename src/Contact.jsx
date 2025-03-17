@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { MdConnectWithoutContact } from "react-icons/md";
 import "./index.css";
-import img from "../src/images/contact.jpg";
+import img from "./images/contact.jpg";
 
 const Contact = () => {
   return (

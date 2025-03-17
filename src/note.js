@@ -5,8 +5,8 @@ import { IoLogIn, IoRestaurant } from "react-icons/io5";
 import "./index.css";
 
 // Import your slider images
-import Image1 from "./images/image2.jpg";
-import Image2 from "./images/image1.jpg";
+import Image1 from "./images/image1.jpg";
+import Image2 from "./images/image2.jpg";
 import Image3 from "./images/image3.jpg";
 import Image4 from "./images/image4.jpg";
 import Image5 from "./images/image5.jpg";
@@ -25,12 +25,12 @@ const Frontpage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col md:flex-row h-screen overflow-hidden  bg-white ">
+    <div className="flex flex-col md:flex-row h-screen overflow-hidden bg-white ">
       {/* Left side - Image Slider */}
-      <div className="md:w-1/2 w-full h-full relative overflow-hidden flex justify-center items-center">
+      <div className="w-1/2 h-full relative overflow-hidden flex justify-center items-center">
         {/* Background Color Bar (only height h-72 and full width) */}
         <div
-          className="absolute  h-72 w-full "
+          className="absolute w-full h-72"
           style={{ backgroundColor: "#341920" }}
         ></div>
 
@@ -44,7 +44,7 @@ const Frontpage = () => {
               key={index}
               src={img}
               alt={`Slide ${index + 1}`}
-              className="md:w-full md:h-full w-full h-full object-cover flex-shrink-0 rounded-full"
+              className="md:w-full md:h-full sm:w-64 sm:h-64 object-cover flex-shrink-0 rounded-full"
             />
           ))}
         </div>
@@ -63,18 +63,17 @@ const Frontpage = () => {
       </div>
 
       {/* Right side - Content */}
-      <div className="flex justify-center items-center md:w-1/2 w-full ">
+      <div className="flex justify-center items-center w-1/2  gap-1">
         <div
-          className="flex justify-center items-center relative w-full h-72 px-2 md:px-0"
+          className="flex justify-center items-center relative w-full h-72"
           style={{ backgroundColor: "#341920" }}
         >
           {/* Background Logo as Watermark (Optional) */}
           {/* <IoRestaurant className="absolute text-[400px] md:text-[500px] text-white opacity-10 z-0" /> */}
 
           {/* Foreground Content */}
-          <div className="flex flex-col items-center justify-center w-full h-full ">
+          <div className="flex flex-col items-center justify-center w-full h-full gap-1">
             {/* Title with Logo - Centered */}
-            <div className="h-20 w-[400px]">
             <div className="flex gap-4 text-4xl md:text-5xl text-white items-center justify-center animate-fadeInUp">
               <IoRestaurant className="text-5xl" />
               <span className="dancing-script-regular text-center">
@@ -83,13 +82,12 @@ const Frontpage = () => {
             </div>
 
             {/* Right-Aligned Welcome Message */}
-            <div className="w-full animate-fadeInUp delay-200 ">
-              <h3 className="flex justify-end text-end">
+            <div className="w-full animate-fadeInUp delay-200 pr-32">
+              <h3 className="flex justify-end">
                 <span className="text-xs md:text-base text-white italic">
                   Welcome to your dining destination!
                 </span>
               </h3>
-            </div>
             </div>
 
             {/* Tagline */}

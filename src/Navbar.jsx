@@ -25,7 +25,7 @@ const Navbar = () => {
       className="py-4 md:py-6 px-6 md:px-24 flex justify-between items-center text-white relative"
     >
       {/* Logo and welcome text */}
-      <div className="italic flex flex-col gap-1">
+      <div className="italic flex flex-col gap-1 w-[213px]">
         <div className="flex items-center gap-2">
           <span className="text-3xl md:text-4xl">
             <IoRestaurant />
@@ -34,7 +34,7 @@ const Navbar = () => {
             Reserve & Dine
           </span>
         </div>
-        <div className="text-xs italic pl-2 md:pl-16 lg:pl-16">
+        <div className="text-xs flex justify-end italic  text-end">
           Welcome to your dining destination!
         </div>
       </div>
